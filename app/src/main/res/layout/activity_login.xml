@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.example.mohdafzal.mvoter.LoginActivity">
+
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="vertical"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp">
+        <TextView
+            android:id="@+id/rec"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="40dp"
+            android:textColor="#fff"
+            android:text="Login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/fulllnamelay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:textColor="@color/colorAccent"
+
+                android:textColorHint="@color/colorAccent"
+
+                app:backgroundTint="@color/colorAccent"
+                android:gravity="center_horizontal"
+
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"/>
+        </android.support.design.widget.TextInputLayout>
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+
+                    app:backgroundTint="@color/colorAccent"
+android:textColorHint="@color/colorAccent"
+                    android:textColor="@color/colorAccent"
+                    android:inputType="textPassword"
+                    android:id="@+id/password"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter your Password"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+    <Button
+        android:layout_alignParentBottom="true"
+        android:textSize="12dp"
+        android:id="@+id/login"
+        android:layout_marginTop="20dp"
+        android:text="Login"
+        android:background="#5cb85c"
+        android:textColor="#fff"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+<ImageView
+    android:layout_marginTop="40dp"
+    android:src="@drawable/logo"
+    android:layout_centerHorizontal="true"
+    android:layout_width="150dp"
+    android:layout_height="150dp" />
+
+</RelativeLayout>
