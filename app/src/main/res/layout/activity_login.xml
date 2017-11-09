@@ -36,6 +36,7 @@
 
             <EditText
                 android:textColor="@color/colorAccent"
+                android:maxLines="1"
 
                 android:textColorHint="@color/colorAccent"
 
@@ -58,6 +59,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:maxLines="1"
 
                     app:backgroundTint="@color/colorAccent"
 android:textColorHint="@color/colorAccent"

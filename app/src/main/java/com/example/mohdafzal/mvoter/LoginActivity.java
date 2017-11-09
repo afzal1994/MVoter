@@ -2,6 +2,7 @@ package com.example.mohdafzal.mvoter;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -111,6 +112,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 progressDialog.hide();
+                System.out.println("first"+response);
                 String newString = response.replace("http://electionapp.uxservices.in", "");
                 String newString1 = newString.replace("<string xmlns=\"\">", "");
                 String newString2 = newString1.replace("</string>", "");
@@ -118,17 +120,31 @@ public class LoginActivity extends AppCompatActivity {
                 System.out.println("dasdxaws"+newstring3);
 
                 try {
-                    JSONArray jsonArray = new JSONArray(newstring3);
+                        JSONArray jsonArray = new JSONArray(newstring3);
                     System.out.println("dqws"+jsonArray);
                     JSONObject jsonObject=jsonArray.getJSONObject(0);
+                    JSONArray jsonArray1=jsonObject.getJSONArray("data");
+                    JSONObject jsonObject1=jsonArray1.getJSONObject(0);
+                   int userid= jsonObject1.getInt("E_User_id");
+                    System.out.println("edsxz"+userid);
+                    Toast.makeText(LoginActivity.this, String.valueOf(userid), Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor editor=getSharedPreferences("userid",MODE_PRIVATE).edit();
+                    editor.putInt("user_id",userid);
+                    editor.apply();
+                    SharedPreferences.Editor editor1=getSharedPreferences("Loginstatus",MODE_PRIVATE).edit();
+editor1.putBoolean("loginstatus",true);
+                    editor1.apply();
+
+
                     String s1=jsonObject.getString("msg");
                     Toast.makeText(LoginActivity.this, s1, Toast.LENGTH_SHORT).show();
 if (s1.matches("Login Successfully")){
     Intent intent=new Intent(LoginActivity.this,DashBoard.class);
+    finish();
     startActivity(intent);
 }
 else{
-    //Toast.makeText(LoginActivity.this, "invailid credintialls", Toast.LENGTH_SHORT).show();
+    Toast.makeText(LoginActivity.this, "please check internet settings", Toast.LENGTH_SHORT).show();
 }
 
                 } catch (JSONException e) {

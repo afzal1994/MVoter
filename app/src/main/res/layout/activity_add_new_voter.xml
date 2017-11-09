@@ -28,7 +28,7 @@
                 android:gravity="center"
                 android:textSize="25dp"
                 android:textColor="#000"
-                android:text="Voter List"
+                android:text="Add New Voter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <ImageView
@@ -43,6 +43,7 @@
         </RelativeLayout>
 
         <EditText
+            android:maxLines="1"
 android:id="@+id/editTextSearch"
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/search"
@@ -74,6 +75,7 @@ android:id="@+id/editTextSearch"
 
     </LinearLayout>
     <LinearLayout
+        android:visibility="visible"
         android:background="#fff"
         android:id="@+id/lin5"
         android:orientation="vertical"
@@ -90,21 +92,28 @@ android:id="@+id/editTextSearch"
             android:layout_width="60dp"
             android:layout_height="30dp" />
         <EditText
+            android:maxLines="1"
+
             android:id="@+id/fname"
 android:hint="First Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
+            android:maxLines="1"
+
             android:id="@+id/mname"
             android:textColorHighlight="#000"
             android:hint="Middle Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" /> <EditText
         android:id="@+id/lname"
+        android:maxLines="1"
+
         android:hint="Last Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
         <RadioGroup
+            android:id="@+id/radiogrupgender"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -115,6 +124,7 @@ android:hint="First Name"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content" />
             <RadioButton
+                android:id="@+id/rdfemale"
                 android:buttonTint="@color/colorPrimaryDark"
 
                 android:text="Female"
@@ -123,24 +133,163 @@ android:hint="First Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RadioGroup>
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/feamlelinear"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/custom_border"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:maxLines="1"
+
+                android:id="@+id/fathersname"
+                android:textColorHighlight="#000"
+                android:hint="Fathers Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:maxLines="1"
+
+                android:id="@+id/addressfather"
+                android:textColorHighlight="#000"
+                android:hint="Enter Fathers Address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+<LinearLayout
+    android:weightSum="10"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <EditText
+        android:editable="false"
+        android:maxLines="1"
+android:layout_weight="7"
+        android:id="@+id/dateofbirth"
+        android:textColorHighlight="#000"
+        android:hint="Date of Birth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/datepicker"
+        android:backgroundTint="@color/colorPrimary"
+        android:background="@drawable/datepicker"
+        android:layout_gravity="center"
+android:layout_marginLeft="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp" />
+
+</LinearLayout>
+
         <EditText
+            android:maxLines="1"
+
+            android:id="@+id/housenumber"
+            android:textColorHighlight="#000"
+            android:hint="House number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:maxLines="1"
+
+            android:id="@+id/idcardnumber"
+            android:textColorHighlight="#000"
+            android:hint="ID Card No."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:maxLines="1"
+
+            android:id="@+id/mobilenumber"
+            android:textColorHighlight="#000"
+            android:hint="Mobile number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:maxLines="1"
+
             android:inputType="number"
             android:id="@+id/gln"
         android:hint="Gov. List Number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" /> <EditText
         android:inputType="number"
+        android:maxLines="1"
 
         android:id="@+id/aadharcard"
         android:hint="Adhar Card Number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-        <Spinner
-            android:entries="@array/spinnerItems"
-android:layout_marginBottom="10dp"
-            android:hint="First Name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="10">
+              <TextView
+                  android:layout_weight="1"
+
+                  android:textColor="#000"
+                  android:textSize="15dp"
+                  android:text="Select ward"
+                  />
+                <Spinner
+                    android:id="@+id/spinward"
+                    android:layout_weight="9"
+                    android:layout_marginBottom="10dp"
+                    android:hint="First Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="10">
+                <TextView
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:text="Select Area"
+                    />
+                <Spinner
+                    android:id="@+id/spinarea"
+                    android:layout_weight="9"
+                    android:entries="@array/spinnerItems"
+                    android:layout_marginBottom="10dp"
+                    android:hint="First Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>        <TableRow
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:weightSum="10">
+            <TextView
+                android:layout_weight="1"
+
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:text="Select Boothe"
+                />
+            <Spinner
+                android:id="@+id/spinbooth"
+                android:layout_weight="9"
+                android:layout_marginBottom="10dp"
+                android:hint="First Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        </TableLayout>
+
     </LinearLayout>
     <LinearLayout
         android:id="@+id/lin3"
@@ -162,9 +311,151 @@ android:layout_marginBottom="10dp"
 
     </LinearLayout>
     <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/lin6"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:layout_below="@id/lin3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="10">
+                <TextView
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:text="Select Residential"
+                    />
+                <Spinner
+                    android:id="@+id/spinresidential"
+                    android:layout_weight="9"
+                    android:layout_marginBottom="10dp"
+                    android:hint="First Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="10">
+                <TextView
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:text="Select Language"
+                    />
+                <Spinner
+                    android:id="@+id/spinlanguage"
+                    android:layout_weight="9"
+                    android:layout_marginBottom="10dp"
+                    android:hint="First Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>        <TableRow
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:weightSum="10">
+            <TextView
+                android:layout_weight="1"
+
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:text="Select Regional"
+                />
+            <Spinner
+                android:id="@+id/spinregion"
+                android:layout_weight="9"
+                android:layout_marginBottom="10dp"
+                android:hint="First Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </TableRow>
+            <TableRow
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="10">
+                <TextView
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:text="Select Caste"
+                    />
+                <Spinner
+                    android:id="@+id/spincaste"
+                    android:layout_weight="9"
+                    android:layout_marginBottom="10dp"
+                    android:hint="First Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+        </TableLayout>
+
+<EditText
+    android:maxLines="1"
+android:id="@+id/address"
+    android:paddingTop="10dp"
+    android:paddingLeft="10dp"
+    android:gravity="top"
+    android:layout_gravity="top"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:background="@drawable/custom_border"
+    android:hint="EnterAddress"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="80dp" />
+        <EditText
+            android:maxLines="1"
+android:id="@+id/societyname"
+            android:hint="Society/Building Name"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:maxLines="1"
+android:id="@+id/floornumber"
+            android:hint="Floor Number"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+        <EditText
+            android:maxLines="1"
+android:id="@+id/streenumber"
+            android:hint="Street Number"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:maxLines="1"
+android:id="@+id/wingnumber"
+            android:hint="Wing number"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:maxLines="1"
+android:id="@+id/flatnumber"
+            android:hint="Flat Number"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
         android:id="@+id/lin4"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/lin3"
+        android:layout_below="@+id/lin6"
         android:background="@color/colorPrimaryDark"
 
         android:layout_width="match_parent"
@@ -180,5 +471,190 @@ android:layout_marginBottom="10dp"
             android:layout_height="45dp" />
 
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/lin7"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:layout_below="@+id/lin4"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:textColor="#000"
+            android:text="Occupation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioGroup
+            android:id="@+id/occupation"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:buttonTint="@color/colorPrimaryDark"
+                android:text="Company"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:buttonTint="@color/colorPrimaryDark"
+
+                android:text="Buisness"
+
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:buttonTint="@color/colorPrimaryDark"
+
+                android:text="Education"
+
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:textColor="#000"
+            android:text="Current Stay Stautus(Outsiders or Not)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioGroup
+            android:id="@+id/staystatus"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:buttonTint="@color/colorPrimaryDark"
+                android:text="YES"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:buttonTint="@color/colorPrimaryDark"
+
+                android:text="NO"
+
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RadioGroup>
+        <EditText
+            android:id="@+id/occupationdetails"
+            android:hint="Occupation Details"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/pincode"
+            android:hint="Pincode"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/staydetails"
+            android:hint="Current Stay Details"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="10">
+                <TextView
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:text="Select State"
+                    />
+                <Spinner
+                    android:id="@+id/spinstate"
+                    android:layout_weight="9"
+                    android:layout_marginBottom="10dp"
+                    android:hint="First Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="10">
+                <TextView
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:text="Select District"
+                    />
+                <Spinner
+                    android:id="@+id/spindistric"
+                    android:layout_weight="9"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+            <TableRow
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:weightSum="10">
+            <TextView
+                android:layout_weight="1"
+
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:text="Select Sub-District"
+                />
+            <Spinner
+                android:id="@+id/spinsubdistrict"
+                android:layout_weight="9"
+                android:layout_marginBottom="10dp"
+                android:hint="First Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </TableRow>
+            <TableRow
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="10">
+                <TextView
+                    android:layout_weight="1"
+
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:text="Select Village"
+                    />
+                <Spinner
+                    android:id="@+id/spinvillage"
+                    android:layout_weight="9"
+                    android:layout_marginBottom="10dp"
+                    android:hint="First Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/lin7"
+        android:text="ADD"
+        android:id="@+id/add"
+        android:layout_alignParentBottom="true"
+        android:background="#5cb85c"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
+
 </android.support.v4.widget.NestedScrollView>

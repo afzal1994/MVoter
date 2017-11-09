@@ -33,9 +33,15 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 SplashScreen.this.finish();
-                Intent  intent=new Intent(SplashScreen.this,LoginActivity.class);
-                startActivity(intent);
-
+                SharedPreferences sharedPreferences=getSharedPreferences("Loginstatus",MODE_PRIVATE);
+                if (sharedPreferences.contains("loginstatus")) {
+                    Intent intent = new Intent(SplashScreen.this, DashBoard.class);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
+                    startActivity(intent);
+                }
 
 
 

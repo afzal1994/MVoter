@@ -1,11 +1,10 @@
-
 <resources>
-<string name="app_name">MVoter</string>
+    <string name="app_name">MVoter</string>
 
-<string-array name="spinnerItems">
-    <item>Select Ward</item>
-    <item>Katraj</item>
-    <item>KoreGaon</item>
-    <item>Chinchwad</item>
-</string-array>
+    <string-array name="spinnerItems">
+        <item>Select Ward</item>
+        <item>Katraj</item>
+        <item>KoreGaon</item>
+        <item>Chinchwad</item>
+    </string-array>
 </resources>
