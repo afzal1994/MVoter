@@ -52,10 +52,10 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
     private Spinner boothspin;
     private RadioButton femalerad;
     private LinearLayout femalelinear;
-    private Spinner resindentialspin, regionalspin, castespin, languagespin, districspin, subdistrictspin, villagespin;
+    private Spinner resindentialspin, regionalspin, castespin, languagespin, districspin, subdistrictspin, villagespin,statespin;
     private int x;
     private int y;
-    private LinearLayout linearpersonal,linearpersonalinner,linearAddress,linearaddressinner,linearadditional,linearadditionalinner;
+    private LinearLayout linearpersonal, linearpersonalinner, linearAddress, linearaddressinner, linearadditional, linearadditionalinner;
     private int warspinpos;
     private int boothspinpos;
     private int castespinpos;
@@ -92,6 +92,7 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
     private int day;
     private String ocuupationradio;
     private String staystatus1;
+    private EditText streenumber;
 
 
     @Override
@@ -108,6 +109,7 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
         loadregion();
         loadcaste();
         loaddistrict();
+        loadState();
     }
 
 
@@ -116,7 +118,22 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
         fname.setOnKeyListener(this);
         mname.setOnKeyListener(this);
         lname.setOnKeyListener(this);
+        housenumber.setOnKeyListener(this);
+        idcardno.setOnKeyListener(this);
+        mobilenumber.setOnKeyListener(this);
         gln.setOnKeyListener(this);
+        aadhar.setOnKeyListener(this);
+        address.setOnKeyListener(this);
+        societyname.setOnKeyListener(this);
+        floornumber.setOnKeyListener(this);
+        streenumber.setOnKeyListener(this);
+        floornumber.setOnKeyListener(this);
+        wingnumber.setOnKeyListener(this);
+        flatnumber.setOnKeyListener(this);
+        occupationdetails.setOnKeyListener(this);
+        picode.setOnKeyListener(this);
+        staydetails.setOnKeyListener(this);
+
         aadhar.setOnKeyListener(this);
         logout.setOnClickListener(this);
         linearadditional.setOnClickListener(this);
@@ -126,33 +143,37 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
     }
 
     private void initui() {
-        dateofbith=(EditText)findViewById(R.id.dateofbirth);
-        datepicker=(ImageView)findViewById(R.id.datepicker);
-        radiogroupmale=(RadioGroup)findViewById(R.id.radiogrupgender);
-        add=(Button)findViewById(R.id.add);
+        dateofbith = (EditText) findViewById(R.id.dateofbirth);
+        datepicker = (ImageView) findViewById(R.id.datepicker);
+        radiogroupmale = (RadioGroup) findViewById(R.id.radiogrupgender);
+        add = (Button) findViewById(R.id.add);
         logout = (ImageView) findViewById(R.id.logout);
         logout.setOnClickListener(this);
         fname = (EditText) findViewById(R.id.fname);
+        streenumber = (EditText) findViewById(R.id.streenumber);
+
         etfathername = (EditText) findViewById(R.id.fathersname);
         etfathersaddress = (EditText) findViewById(R.id.addressfather);
-idcardno=(EditText)findViewById(R.id.idcardnumber);
-        mobilenumber=(EditText)findViewById(R.id.mobilenumber);
-        housenumber=(EditText)findViewById(R.id.housenumber);
-        address=(EditText)findViewById(R.id.address);
-        societyname=(EditText)findViewById(R.id.societyname);
-        floornumber=(EditText)findViewById(R.id.floornumber);
-        wingnumber=(EditText)findViewById(R.id.wingnumber);
-        flatnumber=(EditText)findViewById(R.id.flatnumber);
-        occupationdetails=(EditText)findViewById(R.id.occupationdetails);
-        picode=(EditText)findViewById(R.id.pincode);
-        staydetails=(EditText)findViewById(R.id.staydetails);
-occupatonradio=(RadioGroup)findViewById(R.id.occupation);
-        staystatus=(RadioGroup)findViewById(R.id.staystatus);
+        idcardno = (EditText) findViewById(R.id.idcardnumber);
+        mobilenumber = (EditText) findViewById(R.id.mobilenumber);
+        housenumber = (EditText) findViewById(R.id.housenumber);
+        address = (EditText) findViewById(R.id.address);
+        societyname = (EditText) findViewById(R.id.societyname);
+        floornumber = (EditText) findViewById(R.id.floornumber);
+        wingnumber = (EditText) findViewById(R.id.wingnumber);
+        flatnumber = (EditText) findViewById(R.id.flatnumber);
+        occupationdetails = (EditText) findViewById(R.id.occupationdetails);
+        picode = (EditText) findViewById(R.id.pincode);
+        staydetails = (EditText) findViewById(R.id.staydetails);
+        occupatonradio = (RadioGroup) findViewById(R.id.occupation);
+        staystatus = (RadioGroup) findViewById(R.id.staystatus);
         lname = (EditText) findViewById(R.id.lname);
         mname = (EditText) findViewById(R.id.mname);
         gln = (EditText) findViewById(R.id.gln);
         aadhar = (EditText) findViewById(R.id.aadharcard);
         areaspin = (Spinner) findViewById(R.id.spinarea);
+        statespin = (Spinner) findViewById(R.id.spinstate);
+
         warspin = (Spinner) findViewById(R.id.spinward);
         boothspin = (Spinner) findViewById(R.id.spinbooth);
         femalerad = (RadioButton) findViewById(R.id.rdfemale);
@@ -196,28 +217,25 @@ occupatonradio=(RadioGroup)findViewById(R.id.occupation);
                 startActivity(intent);
                 break;
             case R.id.lin2:
-              if (linearpersonalinner.isShown()){
-                  linearpersonalinner.setVisibility(View.GONE);
-              }
-              else{
-                  linearpersonalinner.setVisibility(View.VISIBLE);
+                if (linearpersonalinner.isShown()) {
+                    linearpersonalinner.setVisibility(View.GONE);
+                } else {
+                    linearpersonalinner.setVisibility(View.VISIBLE);
 
-              }
+                }
                 break;
             case R.id.lin3:
-                if (linearaddressinner.isShown()){
+                if (linearaddressinner.isShown()) {
                     linearaddressinner.setVisibility(View.GONE);
-                }
-                else{
+                } else {
                     linearaddressinner.setVisibility(View.VISIBLE);
 
                 }
                 break;
             case R.id.lin4:
-                if (linearadditionalinner.isShown()){
+                if (linearadditionalinner.isShown()) {
                     linearadditionalinner.setVisibility(View.GONE);
-                }
-                else{
+                } else {
                     linearadditionalinner.setVisibility(View.VISIBLE);
 
                 }
@@ -231,6 +249,7 @@ occupatonradio=(RadioGroup)findViewById(R.id.occupation);
         }
 
     }
+
     @Override
     @Deprecated
     protected Dialog onCreateDialog(int id) {
@@ -247,99 +266,108 @@ occupatonradio=(RadioGroup)findViewById(R.id.occupation);
                     + selectedYear);
         }
     };
+
     private void sendreq() {
-        String radiovalue = ((RadioButton)findViewById(radiogroupmale.getCheckedRadioButtonId())).getText().toString();
-        if (radiovalue.matches("male")){
-            fathersname="";
-            fathersaddress="";
+        if (fname.getText().toString().matches("")) {
+            fname.setError("Please Enter Name");
+            linearpersonalinner.setVisibility(View.VISIBLE);
+            fname.requestFocus();
+        } else if (lname.getText().toString().matches("")) {
+            lname.setError("Please Enter Name");
+            linearpersonalinner.setVisibility(View.VISIBLE);
+
+            lname.requestFocus();
+        } else if (radiogroupmale.getCheckedRadioButtonId() == -1) {
+            lname.requestFocus();
+            linearpersonalinner.setVisibility(View.VISIBLE);
+
+            Toast.makeText(this, "Please Select your gender", Toast.LENGTH_SHORT).show();
         }
         else{
-            fathersname=etfathername.getText().toString();
-            fathersaddress=etfathersaddress.getText().toString();
-        }
-        if (occupatonradio.getCheckedRadioButtonId() == -1)
-        {
-             ocuupationradio="";
-        }
-        else
-        {
-             ocuupationradio=((RadioButton)findViewById(occupatonradio.getCheckedRadioButtonId())).getText().toString();
-        }
-        if (staystatus.getCheckedRadioButtonId() == -1)
-        {
-            staystatus1="";
-        }
-        else
-        {
-            staystatus1=((RadioButton)findViewById(staystatus.getCheckedRadioButtonId())).getText().toString();
-        }
-        final ProgressDialog progressDialog=new ProgressDialog(this);
-            progressDialog.show();
-            String s="http://electionapp.uxservices.in/Web_Services/Add_Voter.asmx/Voter_Add?" +
-                    "ECandidateFName_eng="+fname.getText().toString()+"&ECandidateMName_Eng="+mname.getText().toString()
-                    +"&ECandidateLName_Eng="+lname.getText().toString()+
-                    "&ECandidateFName_Marthi=vvv&ECandidateMName_Marthi=jj&ECandidateLName_Marthi=bbb&gender="+radiovalue +
-                    "&ECandidateAddress="+address.getText().toString()+"&ECandidatePhoneNo="+mobilenumber.getText().toString()
-                    +"&ECandidateImg=jhh&EWardId=123" +
-                    "&VoterwardNumber="+warspinpos+"&age=23&dob="+dateofbith.getText().toString().replace("/",",")+"&houseno="+housenumber.getText().toString()+
-                    "&occupation="+ocuupationradio+"&occp_details="+occupationdetails.getText().toString()+
-                    "&govt_sno="+gln.getText().toString()+"&currentstay_status="+staystatus1+"&idcardno="+idcardno.getText().toString()
-                    +"&fatherhasbandname="+fathersname +
-                    "&Genderadd="+fathersaddress+"&Pin_no="+picode.getText().toString()+"&residentialtype="+resindentialspinpos+
-                    "&regional="+regionalspinpos+"&caste="+castespinpos +
-                    "&Lang="+languagespinpos+"&buildingnam="+societyname.getText().toString()+"&wing_no="+wingnumber.getText().toString()
-                    +"&flatno="+flatnumber.getText().toString()+"&floorno="+floornumber.getText().toString() +
-                    "&street_no="+"sdzx"+"&aadharcard_no="+aadhar.getText().toString() +
-                    "&state=mp&distric="+districspinpos+"&sub_distric="+subdistrictspinpos+"&cityvilage="+villagespinpos+"&area_id="+1+
-                    "&ward_id="+warspinpos+"&staydetails="+staystatus1+"";
-        System.out.println("asdxz"+s);
-            StringRequest stringRequest=new StringRequest(Request.Method.GET, s.replace(" ","%20"), new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    progressDialog.hide();
-                    System.out.println("first"+response);
-                    String newString = response.replace("http://electionapp.uxservices.in", "");
-                    String newString1 = newString.replace("<string xmlns=\"\">", "");
-                    String newString2 = newString1.replace("</string>", "");
-                    String newstring3=newString2.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>","");
-                    System.out.println("dasdxaws"+newstring3);
+            String radiovalue = ((RadioButton) findViewById(radiogroupmale.getCheckedRadioButtonId())).getText().toString();
 
-                    try {
-                      JSONArray jsonArray=new JSONArray(newstring3.replace("<string xmlns=\"/\">",""));
-                        if (jsonArray.getJSONObject(0).getString("Status").matches("true")){
-                            progressDialog.hide();
-                           Toast.makeText(AddNewVoter.this, jsonArray.getJSONObject(0).getString("msg"), Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(AddNewVoter.this,DashBoard.class);
-                            finish();
-                            startActivity(intent);
-                        }
-                        else{
-                            progressDialog.hide();
-                            Toast.makeText(AddNewVoter.this, "please check internet settings", Toast.LENGTH_SHORT).show();
-                        }
+            if (radiovalue.matches("male")) {
+            fathersname = "";
+            fathersaddress = "";
+        } else {
+            fathersname = etfathername.getText().toString();
+            fathersaddress = etfathersaddress.getText().toString();
+        }
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+        if (occupatonradio.getCheckedRadioButtonId() == -1) {
+            ocuupationradio = "";
+        } else {
+            ocuupationradio = ((RadioButton) findViewById(occupatonradio.getCheckedRadioButtonId())).getText().toString();
+        }
+        if (staystatus.getCheckedRadioButtonId() == -1) {
+            staystatus1 = "";
+        } else {
+            staystatus1 = ((RadioButton) findViewById(staystatus.getCheckedRadioButtonId())).getText().toString();
+        }
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.show();
+        String s = "http://electionapp.uxservices.in/Web_Services/Add_Voter.asmx/Voter_Add?" +
+                "ECandidateFName_eng=" + fname.getText().toString() + "&ECandidateMName_Eng=" + mname.getText().toString()
+                + "&ECandidateLName_Eng=" + lname.getText().toString() +
+                "&ECandidateFName_Marthi=vvv&ECandidateMName_Marthi=jj&ECandidateLName_Marthi=bbb&gender=" + radiovalue +
+                "&ECandidateAddress=" + address.getText().toString() + "&ECandidatePhoneNo=" + mobilenumber.getText().toString()
+                + "&ECandidateImg=jhh&EWardId=123" +
+                "&VoterwardNumber=" + warspinpos + "&age=23&dob=" + dateofbith.getText().toString() + "&houseno=" + housenumber.getText().toString() +
+                "&occupation=" + ocuupationradio + "&occp_details=" + occupationdetails.getText().toString() +
+                "&govt_sno=" + gln.getText().toString() + "&currentstay_status=" + staystatus1 + "&idcardno=" + idcardno.getText().toString()
+                + "&fatherhasbandname=" + fathersname +
+                "&Genderadd=" + fathersaddress + "&Pin_no=" + picode.getText().toString() + "&residentialtype=" + resindentialspinpos +
+                "&regional=" + regionalspinpos + "&caste=" + castespinpos +
+                "&Lang=" + languagespinpos + "&buildingnam=" + societyname.getText().toString() + "&wing_no=" + wingnumber.getText().toString()
+                + "&flatno=" + flatnumber.getText().toString() + "&floorno=" + floornumber.getText().toString() +
+                "&street_no=" + staydetails.getText().toString() + "sdzx" + "&aadharcard_no=" + aadhar.getText().toString() +
+                "&state=mp&distric=" + districspinpos + "&sub_distric=" + subdistrictspinpos + "&cityvilage=" + villagespinpos + "&area_id=" + 1 +
+                "&ward_id=" + warspinpos + "&staydetails=" + staystatus1 + "";
+        System.out.println("asdxz" + s);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, s.replace(" ", "%20"), new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                progressDialog.hide();
+                System.out.println("first" + response);
+                String newString = response.replace("http://electionapp.uxservices.in", "");
+                String newString1 = newString.replace("<string xmlns=\"\">", "");
+                String newString2 = newString1.replace("</string>", "");
+                String newstring3 = newString2.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
+                System.out.println("dasdxaws" + newstring3);
+
+                try {
+                    JSONArray jsonArray = new JSONArray(newstring3.replace("<string xmlns=\"/\">", ""));
+                    if (jsonArray.getJSONObject(0).getString("Status").matches("true")) {
+                        progressDialog.hide();
+                        Toast.makeText(AddNewVoter.this, jsonArray.getJSONObject(0).getString("msg"), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(AddNewVoter.this, DashBoard.class);
+                        finish();
+                        startActivity(intent);
+                    } else {
+                        progressDialog.hide();
+                        Toast.makeText(AddNewVoter.this, "please check internet settings", Toast.LENGTH_SHORT).show();
                     }
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
 
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    progressDialog.hide();
-                    Toast.makeText(AddNewVoter.this, error.toString(), Toast.LENGTH_SHORT).show();
-                }
-            });
-            RequestQueue requestQueue= Volley.newRequestQueue(this);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.hide();
+                Toast.makeText(AddNewVoter.this, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         int socketTimeout = 10000;//30 seconds - change to what you want
         RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         stringRequest.setRetryPolicy(policy);
-            requestQueue.add(stringRequest);
-        }
-
-
+        requestQueue.add(stringRequest);
+    }
+    }
 
 
     @Override
@@ -348,15 +376,10 @@ occupatonradio=(RadioGroup)findViewById(R.id.occupation);
             case R.id.fname:
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
+                        case 66:
                             fname.clearFocus();
-                            if (fname.getText().toString().matches("")) {
-                                fname.setError("please enter firstname");
-                            } else {
-                                mname.requestFocus();
-                            }
-                            return true;
+                            mname.requestFocus();
+
                         default:
                             break;
                     }
@@ -367,12 +390,11 @@ occupatonradio=(RadioGroup)findViewById(R.id.occupation);
                     switch (keyCode) {
                         case KeyEvent.KEYCODE_DPAD_CENTER:
                         case KeyEvent.KEYCODE_ENTER:
+
                             lname.clearFocus();
-                            if (lname.getText().toString().matches("")) {
-                                lname.setError("please enter firstname");
-                            } else {
-                                gln.requestFocus();
-                            }
+
+                                housenumber.requestFocus();
+
                             return true;
                         default:
                             break;
@@ -394,17 +416,15 @@ occupatonradio=(RadioGroup)findViewById(R.id.occupation);
                     }
                 }
                 break;
-            case R.id.gln:
+            case R.id.housenumber:
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     switch (keyCode) {
                         case KeyEvent.KEYCODE_DPAD_CENTER:
                         case KeyEvent.KEYCODE_ENTER:
-                            gln.clearFocus();
-                            if (fname.getText().toString().matches("")) {
-                                fname.setError("please enter firstname");
-                            } else {
-                                aadhar.requestFocus();
-                            }
+                            housenumber.clearFocus();
+
+                                idcardno.requestFocus();
+
 
                             return true;
                         default:
@@ -412,24 +432,150 @@ occupatonradio=(RadioGroup)findViewById(R.id.occupation);
                     }
                 }
                 break;
-            case R.id.aadharcard:
+            case R.id.idcardnumber:
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     switch (keyCode) {
                         case KeyEvent.KEYCODE_DPAD_CENTER:
                         case KeyEvent.KEYCODE_ENTER:
-                            aadhar.clearFocus();
-                            if (aadhar.getText().toString().matches("")) {
-                                aadhar.setError("please enter aadhar");
-                            } else {
-                                Toast.makeText(AddNewVoter.this, "All Values Are Right", Toast.LENGTH_SHORT).show();
-                            }
+                            idcardno.clearFocus();
+                           mobilenumber.requestFocus();
+
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+            case R.id.mobilenumber:
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            mobilenumber.clearFocus();
+                            gln.requestFocus();
+
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+            case R.id.gln:
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            gln.clearFocus();
+                            aadhar.requestFocus();
+
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+            case R.id.address:
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            add.clearFocus();
+                            societyname.requestFocus();
+
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+            case R.id.societyname:
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            societyname.clearFocus();
+                            floornumber.requestFocus();
+
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+            case R.id.floornumber:
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            floornumber.clearFocus();
+                            streenumber.requestFocus();
+
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+            case R.id.streenumber:
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            streenumber.clearFocus();
+                            wingnumber.requestFocus();
+
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+            case R.id.wingnumber:
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            wingnumber.clearFocus();
+                            flatnumber.requestFocus();
+
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+            case R.id.occupationdetails:
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            occupationdetails.clearFocus();
+                            picode.requestFocus();
+
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+            case R.id.pincode:
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            picode.clearFocus();
+                            staydetails.requestFocus();
+
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+            case R.id.staydetails:
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_DPAD_CENTER:
+                        case KeyEvent.KEYCODE_ENTER:
+                            staydetails.clearFocus();
+sendreq();
                             return true;
                         default:
                             break;
                     }
                 }
         }
-        return false;
+          return false;
     }
 
     private void loadarea() {
@@ -451,6 +597,7 @@ occupatonradio=(RadioGroup)findViewById(R.id.occupation);
                     final List<AreaModel> yourList = new Gson().fromJson(String.valueOf(jsonArray1), listType);
                     SharedPreferences sharedPreferences = getSharedPreferences("userid", MODE_PRIVATE);
                     List<String> list = new ArrayList<String>();
+                    list.add("Select Area");
                     for (int i = 0; i < yourList.size(); i++) {
                         list.add(yourList.get(i).getElection_Area_Name());
                     }
@@ -461,7 +608,7 @@ occupatonradio=(RadioGroup)findViewById(R.id.occupation);
                     areaspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                          //  areapos=yourList.get(position).
+                            //  areapos=yourList.get(position).
                         }
 
                         @Override
@@ -504,6 +651,7 @@ occupatonradio=(RadioGroup)findViewById(R.id.occupation);
 
                     JSONObject jsonObject = jsonArray1.getJSONObject(0);
                     final List<String> list = new ArrayList<String>();
+                    list.add("Select Ward");
                     for (int i = 0; i < jsonArray1.length(); i++) {
                         list.add(jsonArray1.getJSONObject(i).getString("WardName"));
                     }
@@ -511,22 +659,28 @@ occupatonradio=(RadioGroup)findViewById(R.id.occupation);
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     warspin.setAdapter(dataAdapter);
-warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        try {
-            warspinpos=jsonArray1.getJSONObject(position).getInt("WardId");
-        //    Toast.makeText(AddNewVoter.this, String.valueOf(warspinpos), Toast.LENGTH_SHORT).show();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
+                    warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            try {
+                                if (position==0){
+                                    warspinpos=0;
+                                }
+                                else{
+                                    warspinpos = jsonArray1.getJSONObject(position-1).getInt("WardId");
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
+                                }
+                                //    Toast.makeText(AddNewVoter.this, String.valueOf(warspinpos), Toast.LENGTH_SHORT).show();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
 
-    }
-});
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+
+                        }
+                    });
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -561,6 +715,8 @@ warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
                     JSONObject jsonObject = jsonArray3.getJSONObject(0);
                     List<String> list = new ArrayList<String>();
+                    list.add("Select Booth");
+
                     for (int i = 0; i < jsonArray3.length(); i++) {
                         list.add(jsonArray3.getJSONObject(i).getString("ElectionBoothName"));
                     }
@@ -572,8 +728,13 @@ warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             try {
-                                boothspinpos=jsonArray3.getJSONObject(position).getInt("ElectionBoothId");
-                              //  Toast.makeText(AddNewVoter.this, String.valueOf(boothspinpos), Toast.LENGTH_SHORT).show();
+                                if (position==0){
+                                    boothspinpos=0;
+                                }
+                                else {
+                                    boothspinpos = jsonArray3.getJSONObject(position-1).getInt("ElectionBoothId");
+                                }
+                                //  Toast.makeText(AddNewVoter.this, String.valueOf(boothspinpos), Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -616,6 +777,8 @@ warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
                     JSONObject jsonObject = jsonArray2.getJSONObject(0);
                     List<String> list = new ArrayList<String>();
+                    list.add("Select Caste");
+
                     for (int i = 0; i < jsonArray2.length(); i++) {
                         list.add(jsonArray2.getJSONObject(i).getString("ElectionCasteName"));
                     }
@@ -627,8 +790,12 @@ warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             try {
-                                castespinpos=jsonArray2.getJSONObject(position).getInt("ElectionCasteId");
-                               // Toast.makeText(AddNewVoter.this, String.valueOf(castespinpos), Toast.LENGTH_SHORT).show();
+                                if (position==0){
+                                    castespinpos=0;
+                                }
+                                else{
+                                castespinpos = jsonArray2.getJSONObject(position-1).getInt("ElectionCasteId");}
+                                // Toast.makeText(AddNewVoter.this, String.valueOf(castespinpos), Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -671,6 +838,8 @@ warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
                     JSONObject jsonObject = jsonArray5.getJSONObject(0);
                     List<String> list = new ArrayList<String>();
+                    list.add("Select Region");
+
                     for (int i = 0; i < jsonArray5.length(); i++) {
                         list.add(jsonArray5.getJSONObject(i).getString("ERegionalName"));
                     }
@@ -682,8 +851,13 @@ warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             try {
-                                regionalspinpos=jsonArray5.getJSONObject(position).getInt("ERegionalId");
-                              //  Toast.makeText(AddNewVoter.this, String.valueOf(regionalspinpos), Toast.LENGTH_SHORT).show();
+                                if (position==0){
+                                    regionalspinpos=0;
+                                }
+                                else {
+                                    regionalspinpos = jsonArray5.getJSONObject(position - 1).getInt("ERegionalId");
+                                }
+                                //  Toast.makeText(AddNewVoter.this, String.valueOf(regionalspinpos), Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -727,6 +901,8 @@ warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
                     JSONObject jsonObject = jsonArray6.getJSONObject(0);
                     List<String> list = new ArrayList<String>();
+                    list.add("Select Language");
+
                     for (int i = 0; i < jsonArray6.length(); i++) {
                         list.add(jsonArray6.getJSONObject(i).getString("ELanguageName"));
                     }
@@ -738,8 +914,13 @@ warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             try {
-                                languagespinpos=jsonArray6.getJSONObject(position).getInt("ELanguageId");
-                               // Toast.makeText(AddNewVoter.this, String.valueOf(languagespinpos), Toast.LENGTH_SHORT).show();
+                                if (position==0){
+                                    languagespinpos=0;
+                                }
+                                else {
+                                    languagespinpos = jsonArray6.getJSONObject(position-1).getInt("ELanguageId");
+                                }
+                                // Toast.makeText(AddNewVoter.this, String.valueOf(languagespinpos), Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -783,6 +964,8 @@ warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
                     JSONObject jsonObject = jsonArray7.getJSONObject(0);
                     List<String> list = new ArrayList<String>();
+                    list.add("Select Residential Type");
+
                     for (int i = 0; i < jsonArray7.length(); i++) {
                         list.add(jsonArray7.getJSONObject(i).getString("EResidentialName"));
                     }
@@ -794,8 +977,12 @@ warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             try {
-                                resindentialspinpos=jsonArray7.getJSONObject(position).getInt("EResidentialId");
-                               // Toast.makeText(AddNewVoter.this, String.valueOf(resindentialspinpos), Toast.LENGTH_SHORT).show();
+                                if (position==0){
+                                    resindentialspinpos=0;
+                                }
+                                else{
+                                resindentialspinpos = jsonArray7.getJSONObject(position-1).getInt("EResidentialId");}
+                                // Toast.makeText(AddNewVoter.this, String.valueOf(resindentialspinpos), Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -839,6 +1026,8 @@ warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
                     JSONObject jsonObject = jsonArray8.getJSONObject(0);
                     final List<String> list = new ArrayList<String>();
+                    list.add("Select Area");
+
                     for (int i = 0; i < jsonArray8.length(); i++) {
                         list.add(jsonArray8.getJSONObject(i).getString("DistricName"));
                     }
@@ -851,9 +1040,13 @@ warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                             try {
-
-                                x = jsonArray8.getJSONObject(position).getInt("DistricId");
-                                districspinpos = jsonArray8.getJSONObject(position).getInt("DistricId");
+                                if (position==0){
+                                    districspinpos=0;
+                                }
+                                else {
+                                    x = jsonArray8.getJSONObject(position-1).getInt("DistricId");
+                                    districspinpos = jsonArray8.getJSONObject(position-1).getInt("DistricId");
+                                }
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -912,24 +1105,24 @@ warspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                                                     android.R.layout.simple_spinner_item, list);
                                                             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                                             villagespin.setAdapter(dataAdapter);
-villagespin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        try {
-            villagespinpos=jsonArray10.getJSONObject(position).getString("CityId");
-            System.out.println("Ward"+warspinpos+"Booth"+boothspinpos+"Residential"+resindentialspinpos+"Language"+languagespinpos
-            +"Regional"+regionalspinpos+"Caste"+castespinpos+"District"+districspinpos+"subdistrict"+subdistrictspinpos+
-                    "Village"+villagespinpos);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
+                                                            villagespin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                                                @Override
+                                                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                                                    try {
+                                                                        villagespinpos = jsonArray10.getJSONObject(position).getString("CityId");
+                                                                        System.out.println("Ward" + warspinpos + "Booth" + boothspinpos + "Residential" + resindentialspinpos + "Language" + languagespinpos
+                                                                                + "Regional" + regionalspinpos + "Caste" + castespinpos + "District" + districspinpos + "subdistrict" + subdistrictspinpos +
+                                                                                "Village" + villagespinpos);
+                                                                    } catch (JSONException e) {
+                                                                        e.printStackTrace();
+                                                                    }
+                                                                }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
+                                                                @Override
+                                                                public void onNothingSelected(AdapterView<?> parent) {
 
-    }
-});
+                                                                }
+                                                            });
                                                         } catch (JSONException e) {
                                                             e.printStackTrace();
                                                         }
@@ -988,5 +1181,25 @@ villagespin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+    private void loadState(){
+        ArrayList<String> strings=new ArrayList<>();
+        strings.add("Select State");
+        strings.add("Maharashtra");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(AddNewVoter.this,
+                android.R.layout.simple_spinner_item, strings);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        statespin.setAdapter(dataAdapter);
+        statespin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //  areapos=yourList.get(position).
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 }

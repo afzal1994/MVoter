@@ -81,6 +81,7 @@ booth.setOnClickListener(this);
             case R.id.logout:
                 Intent intent = new Intent(this, LoginActivity.class);
                 finish();
+                finishAffinity();
                 startActivity(intent);
                 break;
             case R.id.voters:
@@ -259,6 +260,10 @@ else {
                     SharedPreferences sharedPreferences=getSharedPreferences("userid",MODE_PRIVATE);
                    int id=sharedPreferences.getInt("user_id",1);
                     if(id==1){
+                        Area.setVisibility(View.VISIBLE);
+                        booth.setVisibility(View.VISIBLE);
+                        worker.setVisibility(View.VISIBLE);
+                        voter.setVisibility(View.VISIBLE);
                         int areacount=jsonObject.getInt("Area Count");
                         int boothcount=jsonObject.getInt(" Booth Incharge Count");
                         int workercount=jsonObject.getInt("Worker Count");
@@ -269,9 +274,12 @@ else {
                         votercountt.setText(String.valueOf(votercount));
 
 
+
                     }
                    else if(id==3){
-                        booth.setVisibility(View.GONE);
+                        Area.setVisibility(View.VISIBLE);
+                        worker.setVisibility(View.VISIBLE);
+                        voter.setVisibility(View.VISIBLE);
                         int workercount=jsonObject.getInt("Worker Count");
                         int votercount=jsonObject.getInt("Voter Count");
                         int areacount=jsonObject.getInt("Area Count");
@@ -282,8 +290,10 @@ else {
 
                     }
                    else if(id==6){
-                        booth.setVisibility(View.GONE);
-                        worker.setVisibility(View.GONE);
+                        Area.setVisibility(View.VISIBLE);
+
+                        voter.setVisibility(View.VISIBLE);
+
                         int votercount=jsonObject.getInt("Voter Count");
                         int areacount=jsonObject.getInt("Area Count");
                         areacountt.setText(String.valueOf(areacount));

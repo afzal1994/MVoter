@@ -39,7 +39,7 @@ ImageView logout;
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_voterlist);
-         editText=(EditText)findViewById(R.id.searchkeyword);
+        editText=(EditText)findViewById(R.id.searchkeyword);
         ImageView button1=(ImageView)findViewById(R.id.searchbutton);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context="com.example.mohdafzal.mvoter.DashBoard">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -45,7 +53,7 @@
             android:layout_width="150dp"
             android:layout_height="40dp" />
         <EditText
-
+android:maxLines="1"
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/search"
             android:layout_marginTop="10dp"
@@ -63,6 +71,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/area"
         android:background="#fff"
         android:layout_width="match_parent"
@@ -117,7 +126,7 @@
 
 </LinearLayout>
     <RelativeLayout
-
+android:visibility="gone"
         android:id="@+id/booth"
         android:layout_marginTop="10dp"
         android:background="#fff"
@@ -173,6 +182,7 @@
 
     </LinearLayout>
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/worker"
         android:layout_marginTop="10dp"
         android:background="#fff"
@@ -229,6 +239,7 @@
 
     </LinearLayout>
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/voters"
         android:layout_marginTop="10dp"
         android:background="#fff"
@@ -261,3 +272,4 @@
 </LinearLayout>
 
 </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

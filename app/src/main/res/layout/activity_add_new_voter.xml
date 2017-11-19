@@ -93,13 +93,19 @@ android:id="@+id/editTextSearch"
             android:layout_height="30dp" />
         <EditText
             android:maxLines="1"
+            android:imeOptions="actionNext"
 
             android:id="@+id/fname"
 android:hint="First Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <requestFocus>
+
+        </requestFocus>
         <EditText
+
             android:maxLines="1"
+            android:imeOptions="actionNext"
 
             android:id="@+id/mname"
             android:textColorHighlight="#000"
@@ -146,6 +152,7 @@ android:hint="First Name"
             android:layout_height="wrap_content">
             <EditText
                 android:maxLines="1"
+                android:imeOptions="actionNext"
 
                 android:id="@+id/fathersname"
                 android:textColorHighlight="#000"
@@ -154,6 +161,7 @@ android:hint="First Name"
                 android:layout_height="wrap_content" />
             <EditText
                 android:maxLines="1"
+                android:imeOptions="actionNext"
 
                 android:id="@+id/addressfather"
                 android:textColorHighlight="#000"
@@ -168,6 +176,7 @@ android:hint="First Name"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <EditText
+
         android:editable="false"
         android:maxLines="1"
 android:layout_weight="7"
@@ -189,6 +198,7 @@ android:layout_marginLeft="30dp"
 
         <EditText
             android:maxLines="1"
+            android:imeOptions="actionNext"
 
             android:id="@+id/housenumber"
             android:textColorHighlight="#000"
@@ -197,6 +207,7 @@ android:layout_marginLeft="30dp"
             android:layout_height="wrap_content" />
         <EditText
             android:maxLines="1"
+            android:imeOptions="actionNext"
 
             android:id="@+id/idcardnumber"
             android:textColorHighlight="#000"
@@ -205,6 +216,7 @@ android:layout_marginLeft="30dp"
             android:layout_height="wrap_content" />
         <EditText
             android:maxLines="1"
+            android:imeOptions="actionNext"
 
             android:id="@+id/mobilenumber"
             android:textColorHighlight="#000"
@@ -213,6 +225,7 @@ android:layout_marginLeft="30dp"
             android:layout_height="wrap_content" />
         <EditText
             android:maxLines="1"
+            android:imeOptions="actionNext"
 
             android:inputType="number"
             android:id="@+id/gln"
@@ -221,6 +234,7 @@ android:layout_marginLeft="30dp"
         android:layout_height="wrap_content" /> <EditText
         android:inputType="number"
         android:maxLines="1"
+        android:imeOptions="actionNext"
 
         android:id="@+id/aadharcard"
         android:hint="Adhar Card Number"
@@ -402,6 +416,8 @@ android:layout_marginLeft="30dp"
         </TableLayout>
 
 <EditText
+    android:imeOptions="actionNext"
+
     android:maxLines="1"
 android:id="@+id/address"
     android:paddingTop="10dp"
@@ -416,6 +432,8 @@ android:id="@+id/address"
     android:layout_width="match_parent"
     android:layout_height="80dp" />
         <EditText
+            android:imeOptions="actionNext"
+
             android:maxLines="1"
 android:id="@+id/societyname"
             android:hint="Society/Building Name"
@@ -424,6 +442,7 @@ android:id="@+id/societyname"
             android:layout_height="wrap_content" />
 
         <EditText
+            android:imeOptions="actionNext"
             android:maxLines="1"
 android:id="@+id/floornumber"
             android:hint="Floor Number"
@@ -431,6 +450,7 @@ android:id="@+id/floornumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
         <EditText
+            android:imeOptions="actionNext"
             android:maxLines="1"
 android:id="@+id/streenumber"
             android:hint="Street Number"
@@ -439,6 +459,7 @@ android:id="@+id/streenumber"
             android:layout_height="wrap_content" />
         <EditText
             android:maxLines="1"
+            android:imeOptions="actionNext"
 android:id="@+id/wingnumber"
             android:hint="Wing number"
             android:layout_marginTop="10dp"
@@ -447,6 +468,7 @@ android:id="@+id/wingnumber"
         <EditText
             android:maxLines="1"
 android:id="@+id/flatnumber"
+            android:imeOptions="actionNext"
             android:hint="Flat Number"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
@@ -547,18 +569,21 @@ android:id="@+id/flatnumber"
         </RadioGroup>
         <EditText
             android:id="@+id/occupationdetails"
+            android:imeOptions="actionNext"
             android:hint="Occupation Details"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/pincode"
+            android:imeOptions="actionNext"
             android:hint="Pincode"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/staydetails"
+            android:imeOptions="actionNext"
             android:hint="Current Stay Details"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
