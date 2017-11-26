@@ -31,10 +31,17 @@
         <activity
             android:name=".AddNewVoter"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".Voterlist"
+        <activity
+            android:name=".Voterlist"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".VoterAccordingArealist"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-
+            >
         </activity>
+        <activity android:name=".FieldAssistantVoterList"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>

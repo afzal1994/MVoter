@@ -94,7 +94,7 @@ android:id="@+id/editTextSearch"
         <EditText
             android:maxLines="1"
             android:imeOptions="actionNext"
-
+android:singleLine="true"
             android:id="@+id/fname"
 android:hint="First Name"
             android:layout_width="match_parent"
@@ -103,6 +103,7 @@ android:hint="First Name"
 
         </requestFocus>
         <EditText
+            android:singleLine="true"
 
             android:maxLines="1"
             android:imeOptions="actionNext"
@@ -114,6 +115,7 @@ android:hint="First Name"
             android:layout_height="wrap_content" /> <EditText
         android:id="@+id/lname"
         android:maxLines="1"
+        android:singleLine="true"
 
         android:hint="Last Name"
         android:layout_width="match_parent"
@@ -153,6 +155,7 @@ android:hint="First Name"
             <EditText
                 android:maxLines="1"
                 android:imeOptions="actionNext"
+                android:singleLine="true"
 
                 android:id="@+id/fathersname"
                 android:textColorHighlight="#000"
@@ -162,6 +165,7 @@ android:hint="First Name"
             <EditText
                 android:maxLines="1"
                 android:imeOptions="actionNext"
+                android:singleLine="true"
 
                 android:id="@+id/addressfather"
                 android:textColorHighlight="#000"
@@ -176,6 +180,7 @@ android:hint="First Name"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <EditText
+        android:singleLine="true"
 
         android:editable="false"
         android:maxLines="1"
@@ -199,6 +204,7 @@ android:layout_marginLeft="30dp"
         <EditText
             android:maxLines="1"
             android:imeOptions="actionNext"
+            android:singleLine="true"
 
             android:id="@+id/housenumber"
             android:textColorHighlight="#000"
@@ -208,6 +214,7 @@ android:layout_marginLeft="30dp"
         <EditText
             android:maxLines="1"
             android:imeOptions="actionNext"
+            android:singleLine="true"
 
             android:id="@+id/idcardnumber"
             android:textColorHighlight="#000"
@@ -217,6 +224,7 @@ android:layout_marginLeft="30dp"
         <EditText
             android:maxLines="1"
             android:imeOptions="actionNext"
+            android:singleLine="true"
 
             android:id="@+id/mobilenumber"
             android:textColorHighlight="#000"
@@ -226,6 +234,7 @@ android:layout_marginLeft="30dp"
         <EditText
             android:maxLines="1"
             android:imeOptions="actionNext"
+            android:singleLine="true"
 
             android:inputType="number"
             android:id="@+id/gln"
@@ -235,6 +244,7 @@ android:layout_marginLeft="30dp"
         android:inputType="number"
         android:maxLines="1"
         android:imeOptions="actionNext"
+        android:singleLine="true"
 
         android:id="@+id/aadharcard"
         android:hint="Adhar Card Number"
@@ -417,6 +427,7 @@ android:layout_marginLeft="30dp"
 
 <EditText
     android:imeOptions="actionNext"
+    android:singleLine="true"
 
     android:maxLines="1"
 android:id="@+id/address"
@@ -433,6 +444,7 @@ android:id="@+id/address"
     android:layout_height="80dp" />
         <EditText
             android:imeOptions="actionNext"
+            android:singleLine="true"
 
             android:maxLines="1"
 android:id="@+id/societyname"
@@ -442,6 +454,7 @@ android:id="@+id/societyname"
             android:layout_height="wrap_content" />
 
         <EditText
+            android:singleLine="true"
             android:imeOptions="actionNext"
             android:maxLines="1"
 android:id="@+id/floornumber"
@@ -452,6 +465,7 @@ android:id="@+id/floornumber"
         <EditText
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:singleLine="true"
 android:id="@+id/streenumber"
             android:hint="Street Number"
             android:layout_marginTop="10dp"
@@ -459,6 +473,7 @@ android:id="@+id/streenumber"
             android:layout_height="wrap_content" />
         <EditText
             android:maxLines="1"
+            android:singleLine="true"
             android:imeOptions="actionNext"
 android:id="@+id/wingnumber"
             android:hint="Wing number"
@@ -470,6 +485,7 @@ android:id="@+id/wingnumber"
 android:id="@+id/flatnumber"
             android:imeOptions="actionNext"
             android:hint="Flat Number"
+            android:singleLine="true"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -571,6 +587,7 @@ android:id="@+id/flatnumber"
             android:id="@+id/occupationdetails"
             android:imeOptions="actionNext"
             android:hint="Occupation Details"
+            android:singleLine="true"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -578,12 +595,14 @@ android:id="@+id/flatnumber"
             android:id="@+id/pincode"
             android:imeOptions="actionNext"
             android:hint="Pincode"
+            android:singleLine="true"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/staydetails"
             android:imeOptions="actionNext"
+            android:singleLine="true"
             android:hint="Current Stay Details"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"

@@ -11,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -39,53 +40,32 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
          name=(EditText)findViewById(R.id.username);
          pass=(EditText)findViewById(R.id.password);
-        name.setOnKeyListener(new View.OnKeyListener()
-        {
-            public boolean onKey(View v, int keyCode, KeyEvent event)
-            {
-                if (event.getAction() == KeyEvent.ACTION_DOWN)
-                {
-                    switch (keyCode)
-                    {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            name.clearFocus();
-                            pass.requestFocus();
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-                return false;
+        name.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                name.clearFocus();
+                pass.requestFocus();
+                return true;
             }
         });
-        pass.setOnKeyListener(new View.OnKeyListener()
-        {
-            public boolean onKey(View v, int keyCode, KeyEvent event)
-            {
-                if (event.getAction() == KeyEvent.ACTION_DOWN)
-                {
-                    switch (keyCode)
-                    {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            pass.clearFocus();
-                            if(name.getText().toString().matches("")){
-                                name.setError("please enter username");
-                            }
-                            else if(pass.getText().toString().matches("")){
-                                pass.setError("please enter password");
-                            }
-                            else{
-                                sendreq();
-                            }                            return true;
-                        default:
-                            break;
-                    }
+        pass.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(name.getText().toString().matches("")){
+                    name.setError("please enter username");
                 }
-                return false;
+                else if(pass.getText().toString().matches("")){
+                    pass.setError("please enter password");
+                }
+                else{
+                    sendreq();
+                }                return true;
             }
         });
+
+
         Button login=(Button)findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override

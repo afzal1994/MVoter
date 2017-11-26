@@ -1,5 +1,6 @@
 package com.example.mohdafzal.mvoter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ public class AreAdapter extends RecyclerView.Adapter<AreAdapter.InfoHolder> {
     public AreAdapter.InfoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.areaadapter,parent,false);
 
-        return new InfoHolder(view);
+        return new InfoHolder(view,context,list);
     }
 
     @Override
@@ -41,14 +42,27 @@ holder.textView.setText(list.get(position).getElection_Area_Name());
         return list.size();
     }
 
-    public class InfoHolder extends RecyclerView.ViewHolder {
+    public class InfoHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView count,textView;
+        private final DashBoard context;
+        private final List<AreaModel> list;
 
-        public InfoHolder(View itemView) {
+        public InfoHolder(View itemView, DashBoard context, List<AreaModel> list) {
             super(itemView);
+            this.context=context;
+            this.list=list;
              textView=(TextView)itemView.findViewById(R.id.name);
              count=(TextView)itemView.findViewById(R.id.count);
+            itemView.setOnClickListener(this);
 
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent=new Intent(context,VoterAccordingArealist.class);
+            intent.putExtra("area_id",list.get(getAdapterPosition()).getElection_Area_id());
+            context.startActivity(intent);
         }
     }
 }

@@ -37,9 +37,9 @@
             <EditText
                 android:textColor="@color/colorAccent"
                 android:maxLines="1"
-
+android:singleLine="true"
                 android:textColorHint="@color/colorAccent"
-
+android:imeOptions="actionDone"
                 app:backgroundTint="@color/colorAccent"
                 android:gravity="center_horizontal"
 
@@ -60,6 +60,7 @@
 
                 <EditText
                     android:maxLines="1"
+                    android:singleLine="true"
 
                     app:backgroundTint="@color/colorAccent"
 android:textColorHint="@color/colorAccent"

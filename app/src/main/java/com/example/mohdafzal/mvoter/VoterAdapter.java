@@ -1,5 +1,6 @@
 package com.example.mohdafzal.mvoter;
 
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +16,22 @@ import java.util.List;
 public class VoterAdapter extends RecyclerView.Adapter<VoterAdapter.InfoHolder> {
 
     private final List<VoterModel> list;
-    private final Voterlist context;
+    private final AppCompatActivity context;
 
     public VoterAdapter(Voterlist dashBoard, List<VoterModel> yourList) {
         this.list=yourList;
         this.context=dashBoard;
 
+    }
+
+    public VoterAdapter(VoterAccordingArealist voterAccordingArealist, List<VoterModel> yourList) {
+        this.context=voterAccordingArealist;
+        this.list=yourList;
+    }
+
+    public VoterAdapter(FieldAssistantVoterList fieldAssistantVoterList, List<VoterModel> yourList) {
+        this.context=fieldAssistantVoterList;
+        this.list=yourList;
     }
 
     @Override

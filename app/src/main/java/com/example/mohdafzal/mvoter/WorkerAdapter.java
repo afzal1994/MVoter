@@ -1,5 +1,6 @@
 package com.example.mohdafzal.mvoter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.InfoHolder
     public WorkerAdapter.InfoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.inchargeadapter,parent,false);
 
-        return new WorkerAdapter.InfoHolder(view);
+        return new WorkerAdapter.InfoHolder(view,context,list);
     }
 
     @Override
@@ -43,11 +44,23 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.InfoHolder
 
     public class InfoHolder extends RecyclerView.ViewHolder {
         private final TextView count,textView;
+        private final DashBoard context;
+        private final List<WorkerModel> list;
 
-        public InfoHolder(View itemView) {
+        public InfoHolder(View itemView, final DashBoard context, List<WorkerModel> list) {
             super(itemView);
+            this.context=context;
+            this.list=list;
+
             textView=(TextView)itemView.findViewById(R.id.name);
             count=(TextView)itemView.findViewById(R.id.count);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(context,FieldAssistantVoterList.class);
+                    context.startActivity(intent);
+                }
+            });
 
         }
     }

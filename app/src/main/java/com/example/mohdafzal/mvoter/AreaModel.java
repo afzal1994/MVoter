@@ -7,12 +7,14 @@ package com.example.mohdafzal.mvoter;
 public class AreaModel  {
 
     /**
-     * votercount : 2
-     * Election_Area_Name : karvenager
+     * votercount : 41
+     * Election_Area_Name : Shivajinager
+     * Election_Area_id : 1
      */
 
     private int votercount;
     private String Election_Area_Name;
+    private int Election_Area_id;
 
     public int getVotercount() {
         return votercount;
@@ -30,5 +32,11 @@ public class AreaModel  {
         this.Election_Area_Name = Election_Area_Name;
     }
 
+    public int getElection_Area_id() {
+        return Election_Area_id;
+    }
 
+    public void setElection_Area_id(int Election_Area_id) {
+        this.Election_Area_id = Election_Area_id;
+    }
 }

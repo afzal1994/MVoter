@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -44,7 +45,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class AddNewVoter extends AppCompatActivity implements View.OnClickListener, View.OnKeyListener {
+public class AddNewVoter extends AppCompatActivity implements View.OnClickListener,TextView.OnEditorActionListener {
     private EditText fname, lname, mname, gln, aadhar;
     private ImageView logout;
     private Spinner areaspin;
@@ -115,26 +116,26 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
 
     private void initlistner() {
         datepicker.setOnClickListener(this);
-        fname.setOnKeyListener(this);
-        mname.setOnKeyListener(this);
-        lname.setOnKeyListener(this);
-        housenumber.setOnKeyListener(this);
-        idcardno.setOnKeyListener(this);
-        mobilenumber.setOnKeyListener(this);
-        gln.setOnKeyListener(this);
-        aadhar.setOnKeyListener(this);
-        address.setOnKeyListener(this);
-        societyname.setOnKeyListener(this);
-        floornumber.setOnKeyListener(this);
-        streenumber.setOnKeyListener(this);
-        floornumber.setOnKeyListener(this);
-        wingnumber.setOnKeyListener(this);
-        flatnumber.setOnKeyListener(this);
-        occupationdetails.setOnKeyListener(this);
-        picode.setOnKeyListener(this);
-        staydetails.setOnKeyListener(this);
+        fname.setOnEditorActionListener(this);
+        mname.setOnEditorActionListener(this);
+        lname.setOnEditorActionListener(this);
+        housenumber.setOnEditorActionListener(this);
+        idcardno.setOnEditorActionListener(this);
+        mobilenumber.setOnEditorActionListener(this);
+        gln.setOnEditorActionListener(this);
+        aadhar.setOnEditorActionListener(this);
+        address.setOnEditorActionListener(this);
+        societyname.setOnEditorActionListener(this);
+        floornumber.setOnEditorActionListener(this);
+        streenumber.setOnEditorActionListener(this);
+        floornumber.setOnEditorActionListener(this);
+        wingnumber.setOnEditorActionListener(this);
+        flatnumber.setOnEditorActionListener(this);
+        occupationdetails.setOnEditorActionListener(this);
+        picode.setOnEditorActionListener(this);
+        staydetails.setOnEditorActionListener(this);
 
-        aadhar.setOnKeyListener(this);
+        aadhar.setOnEditorActionListener(this);
         logout.setOnClickListener(this);
         linearadditional.setOnClickListener(this);
         linearAddress.setOnClickListener(this);
@@ -370,213 +371,7 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
     }
 
 
-    @Override
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
-        switch (v.getId()) {
-            case R.id.fname:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case 66:
-                            fname.clearFocus();
-                            mname.requestFocus();
 
-                        default:
-                            break;
-                    }
-                }
-                break;
-            case R.id.lname:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-
-                            lname.clearFocus();
-
-                                housenumber.requestFocus();
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-                break;
-
-            case R.id.mname:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            fname.clearFocus();
-                            lname.requestFocus();
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-                break;
-            case R.id.housenumber:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            housenumber.clearFocus();
-
-                                idcardno.requestFocus();
-
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-                break;
-            case R.id.idcardnumber:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            idcardno.clearFocus();
-                           mobilenumber.requestFocus();
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-            case R.id.mobilenumber:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            mobilenumber.clearFocus();
-                            gln.requestFocus();
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-            case R.id.gln:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            gln.clearFocus();
-                            aadhar.requestFocus();
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-            case R.id.address:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            add.clearFocus();
-                            societyname.requestFocus();
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-            case R.id.societyname:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            societyname.clearFocus();
-                            floornumber.requestFocus();
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-            case R.id.floornumber:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            floornumber.clearFocus();
-                            streenumber.requestFocus();
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-            case R.id.streenumber:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            streenumber.clearFocus();
-                            wingnumber.requestFocus();
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-            case R.id.wingnumber:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            wingnumber.clearFocus();
-                            flatnumber.requestFocus();
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-            case R.id.occupationdetails:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            occupationdetails.clearFocus();
-                            picode.requestFocus();
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-            case R.id.pincode:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            picode.clearFocus();
-                            staydetails.requestFocus();
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-            case R.id.staydetails:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            staydetails.clearFocus();
-sendreq();
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-        }
-          return false;
-    }
 
     private void loadarea() {
         SharedPreferences sharedPreference = getSharedPreferences("userid", MODE_PRIVATE);
@@ -1201,5 +996,132 @@ sendreq();
 
             }
         });
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        switch (v.getId()) {
+            case R.id.fname:
+
+                            fname.clearFocus();
+                            mname.requestFocus();
+
+                            break;
+
+
+            case R.id.lname:
+
+
+                            lname.clearFocus();
+
+                            housenumber.requestFocus();
+
+
+
+                            break;
+
+
+
+            case R.id.mname:
+
+                            fname.clearFocus();
+                            lname.requestFocus();
+
+
+
+                break;
+            case R.id.housenumber:
+
+                            housenumber.clearFocus();
+
+                            idcardno.requestFocus();
+
+
+
+
+                break;
+            case R.id.idcardnumber:
+
+                            idcardno.clearFocus();
+                            mobilenumber.requestFocus();
+
+
+break;
+            case R.id.mobilenumber:
+
+                            mobilenumber.clearFocus();
+                            gln.requestFocus();
+
+break;
+
+            case R.id.gln:
+
+                            gln.clearFocus();
+                            aadhar.requestFocus();
+
+                break;
+
+
+            case R.id.address:
+
+                            add.clearFocus();
+                            societyname.requestFocus();
+
+                break;
+
+
+            case R.id.societyname:
+
+                            societyname.clearFocus();
+                            floornumber.requestFocus();
+
+                            break;
+
+
+            case R.id.floornumber:
+
+                            floornumber.clearFocus();
+                            streenumber.requestFocus();
+
+                            break;
+
+
+            case R.id.streenumber:
+
+                            streenumber.clearFocus();
+                            wingnumber.requestFocus();
+
+                           break;
+
+            case R.id.wingnumber:
+
+                            wingnumber.clearFocus();
+                            flatnumber.requestFocus();
+
+
+                            break;
+
+            case R.id.occupationdetails:
+
+                            occupationdetails.clearFocus();
+                            picode.requestFocus();
+
+                            break;
+
+            case R.id.pincode:
+
+                            picode.clearFocus();
+                            staydetails.requestFocus();
+
+                            break;
+
+            case R.id.staydetails:
+
+                            staydetails.clearFocus();
+                            sendreq();
+                            break;
+
+        }
+        return false;
     }
 }
