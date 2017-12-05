@@ -6,17 +6,22 @@ package com.example.mohdafzal.mvoter;
 
 public class InchageModel {
 
+
     /**
      * E_User_id : 2
      * incharge_fname : Ridhi
      * incharge_lname :  Khan
-     * votercount : 3
+     * E_User_PhoneNo : 7894561236
+     * votercount : 7
+     * Area : ,swarget,kothrud
      */
 
     private int E_User_id;
     private String incharge_fname;
     private String incharge_lname;
+    private String E_User_PhoneNo;
     private int votercount;
+    private String Area;
 
     public int getE_User_id() {
         return E_User_id;
@@ -42,11 +47,27 @@ public class InchageModel {
         this.incharge_lname = incharge_lname;
     }
 
+    public String getE_User_PhoneNo() {
+        return E_User_PhoneNo;
+    }
+
+    public void setE_User_PhoneNo(String E_User_PhoneNo) {
+        this.E_User_PhoneNo = E_User_PhoneNo;
+    }
+
     public int getVotercount() {
         return votercount;
     }
 
     public void setVotercount(int votercount) {
         this.votercount = votercount;
+    }
+
+    public String getArea() {
+        return Area;
+    }
+
+    public void setArea(String Area) {
+        this.Area = Area;
     }
 }

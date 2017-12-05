@@ -11,7 +11,7 @@ public class VoterModel {
      * Election_multiple_Area_id : 2
      * Election_Multiple_Worker_id : 1
      * Voter_Id : 1
-     * Voter_Eng_FName :
+     * Voter_Eng_FName :   ABIR
      * Voter_Eng_MName :
      * Voter_Eng_LName : Vyas
      * Voter_Marathi_FName : null
@@ -52,8 +52,8 @@ public class VoterModel {
      * Voter_Aadharcard_No : null
      * Voter_State : Maharastra
      * Voter_distric : 0
-     * Voter_Sub_Distric : 0
-     * Voter_Village_City : 0
+     * Voter_Sub_Distric :
+     * Voter_Village_City :
      * Voter_Area_id : 2
      * Voter_Ward_id : 3
      */

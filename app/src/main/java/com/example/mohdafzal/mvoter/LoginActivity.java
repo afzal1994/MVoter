@@ -3,6 +3,9 @@ package com.example.mohdafzal.mvoter;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -25,6 +28,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static android.Manifest.permission.CALL_PHONE;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText name;
@@ -40,6 +45,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
          name=(EditText)findViewById(R.id.username);
          pass=(EditText)findViewById(R.id.password);
+        if(checkPermission()){
+
+            //Toast.makeText(MainActivity.this, "All Permissions Granted Successfully", Toast.LENGTH_LONG).show();
+
+        }
+        else {
+
+            requestPermission();
+        }
         name.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
             @Override
@@ -83,7 +97,38 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+    private void requestPermission() {
 
+        ActivityCompat.requestPermissions(LoginActivity.this, new String[]
+                {
+                        CALL_PHONE
+                }, 1);
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+
+            case 1:
+
+                if (grantResults.length > 0) {
+
+                    boolean CameraPermission = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+
+
+                    if (CameraPermission ) {
+
+
+                    }
+                    else {
+
+                    }
+                }
+
+                break;
+        }
+    }
     private void sendreq() {
         final ProgressDialog progressDialog=new ProgressDialog(this);
         progressDialog.show();
@@ -142,6 +187,13 @@ else{
         });
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+    public boolean checkPermission() {
+
+        int FirstPermissionResult = ContextCompat.checkSelfPermission(getApplicationContext(), CALL_PHONE);
+
+        return FirstPermissionResult == PackageManager.PERMISSION_GRANTED ;
+
     }
     }
 

@@ -36,6 +36,7 @@ public class FieldAssistantVoterList extends AppCompatActivity {
     ImageView logout;
     private EditText editText;
     public static int area_id;
+    private int user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class FieldAssistantVoterList extends AppCompatActivity {
 
         setContentView(R.layout.activity_field_assistant_voter_list);
         Bundle extras = getIntent().getExtras();
-
+        user_id = extras.getInt("user_id");
         editText = (EditText) findViewById(R.id.searchkeyword);
         ImageView button1 = (ImageView) findViewById(R.id.searchbutton);
 
@@ -56,6 +57,13 @@ public class FieldAssistantVoterList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FieldAssistantVoterList.this, LoginActivity.class);
+                finish();
+                finishAffinity();
+                SharedPreferences.Editor editor=getSharedPreferences("Loginstatus",MODE_PRIVATE).edit();
+                editor.putBoolean("loginstatus",false);
+                editor.clear();
+                editor.apply();
+
                 startActivity(intent);
             }
         });
@@ -63,6 +71,7 @@ public class FieldAssistantVoterList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FieldAssistantVoterList.this, AddNewVoter.class);
+                intent.putExtra("voter_id",0);
                 startActivity(intent);
 
             }
@@ -75,7 +84,7 @@ public class FieldAssistantVoterList extends AppCompatActivity {
 
         SharedPreferences sharedPreference2 = getSharedPreferences("userid", MODE_PRIVATE);
         int user_id2 = sharedPreference2.getInt("user_id", 1);
-        String url2 = "http://electionapp.uxservices.in/Web_Services/VoterList_worker.asmx/Voterlist?user_id=" + user_id2 + "&search=" + editText.getText().toString();
+        String url2 = "http://electionapp.uxservices.in/Web_Services/Manager_Voter_List.asmx/Voter_List?user_id=" + user_id ;
         System.out.println("thisurl" + url2);
         StringRequest stringRequest2 = new StringRequest(Request.Method.GET, url2, new Response.Listener<String>() {
             @Override

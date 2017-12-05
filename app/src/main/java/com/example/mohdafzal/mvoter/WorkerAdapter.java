@@ -47,7 +47,7 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.InfoHolder
         private final DashBoard context;
         private final List<WorkerModel> list;
 
-        public InfoHolder(View itemView, final DashBoard context, List<WorkerModel> list) {
+        public InfoHolder(View itemView, final DashBoard context, final List<WorkerModel> list) {
             super(itemView);
             this.context=context;
             this.list=list;
@@ -58,6 +58,7 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.InfoHolder
                 @Override
                 public void onClick(View v) {
                     Intent intent=new Intent(context,FieldAssistantVoterList.class);
+                    intent.putExtra("user_id",list.get(getAdapterPosition()).getE_User_id());
                     context.startActivity(intent);
                 }
             });

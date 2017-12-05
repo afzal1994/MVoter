@@ -53,6 +53,7 @@ public class DashBoard extends AppCompatActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DashBoard.this, AddNewVoter.class);
+                intent.putExtra("voter_id",0);
                 startActivity(intent);
 
             }
@@ -82,6 +83,11 @@ booth.setOnClickListener(this);
                 Intent intent = new Intent(this, LoginActivity.class);
                 finish();
                 finishAffinity();
+                SharedPreferences.Editor editor=getSharedPreferences("Loginstatus",MODE_PRIVATE).edit();
+                editor.putBoolean("loginstatus",false);
+                editor.clear();
+                editor.apply();
+
                 startActivity(intent);
                 break;
             case R.id.voters:
@@ -298,6 +304,18 @@ else {
                         int areacount=jsonObject.getInt("Area Count");
                         areacountt.setText(String.valueOf(areacount));
                         votercountt.setText(String.valueOf(votercount));
+                    }
+                    else if(id==0){
+                        Area.setVisibility(View.VISIBLE);
+                        worker.setVisibility(View.VISIBLE);
+                        voter.setVisibility(View.VISIBLE);
+                        int workercount=jsonObject.getInt("Worker Count");
+                        int votercount=jsonObject.getInt("Voter Count");
+                        int areacount=jsonObject.getInt("Area Count");
+                        areacountt.setText(String.valueOf(areacount));
+                        workercountt.setText(String.valueOf(workercount));
+                        votercountt.setText(String.valueOf(votercount));
+
                     }
 
                 } catch (JSONException e) {

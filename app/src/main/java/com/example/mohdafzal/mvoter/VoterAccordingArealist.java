@@ -64,6 +64,13 @@ public class VoterAccordingArealist extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(VoterAccordingArealist.this, LoginActivity.class);
+                finish();
+                finishAffinity();
+                SharedPreferences.Editor editor=getSharedPreferences("Loginstatus",MODE_PRIVATE).edit();
+                editor.putBoolean("loginstatus",false);
+                editor.clear();
+                editor.apply();
+
                 startActivity(intent);
             }
         });
@@ -71,6 +78,7 @@ public class VoterAccordingArealist extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(VoterAccordingArealist.this, AddNewVoter.class);
+                intent.putExtra("voter_id",0);
                 startActivity(intent);
 
             }

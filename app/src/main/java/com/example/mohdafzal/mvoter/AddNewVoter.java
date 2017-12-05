@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,12 +23,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
@@ -43,9 +43,11 @@ import org.json.JSONObject;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class AddNewVoter extends AppCompatActivity implements View.OnClickListener,TextView.OnEditorActionListener {
+public class AddNewVoter extends AppCompatActivity implements View.OnClickListener, TextView.OnEditorActionListener {
     private EditText fname, lname, mname, gln, aadhar;
     private ImageView logout;
     private Spinner areaspin;
@@ -53,7 +55,7 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
     private Spinner boothspin;
     private RadioButton femalerad;
     private LinearLayout femalelinear;
-    private Spinner resindentialspin, regionalspin, castespin, languagespin, districspin, subdistrictspin, villagespin,statespin;
+    private Spinner resindentialspin, regionalspin, castespin, languagespin, districspin, subdistrictspin, villagespin, statespin;
     private int x;
     private int y;
     private LinearLayout linearpersonal, linearpersonalinner, linearAddress, linearaddressinner, linearadditional, linearadditionalinner;
@@ -94,6 +96,9 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
     private String ocuupationradio;
     private String staystatus1;
     private EditText streenumber;
+    private int areapos;
+    private String radiovalue;
+    private int voter_id;
 
 
     @Override
@@ -111,6 +116,61 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
         loadcaste();
         loaddistrict();
         loadState();
+        Bundle extras = getIntent().getExtras();
+        voter_id = extras.getInt("voter_id");
+        if (voter_id != 0) {
+            SharedPreferences sharedPreference = getSharedPreferences("userid", MODE_PRIVATE);
+            int user_id = sharedPreference.getInt("user_id", 1);
+            String url = "http://electionapp.uxservices.in/Web_Services/Update_Voter.asmx/Update?voter_id=" + voter_id;
+            System.out.println("voterdetails" + url);
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    String jsonArray = response.replace("<string xmlns=\"http://electionapp.uxservices.in/\">", "").replace("</string>", "");
+                    try {
+
+                        final JSONArray jsonArray1 = new JSONArray(jsonArray.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", ""));
+                        System.out.println("voterdetails" + jsonArray1);
+                        JSONObject jsonObject = jsonArray1.getJSONObject(0);
+                        fname.setText(jsonObject.getString("Voter_Eng_FName"));
+                        mname.setText(jsonObject.getString("Voter_Eng_MName"));
+                        lname.setText(jsonObject.getString("Voter_Eng_LName"));
+                        address.setText(jsonObject.getString("Voter_Address"));
+                        mobilenumber.setText(jsonObject.getString("Voter_PhoneNo"));
+                        housenumber.setText(jsonObject.getString("Voter_House_No"));
+                        occupationdetails.setText(jsonObject.getString("Voter_Occupation"));
+                        staydetails.setText(jsonObject.getString("Voter_Stay_Details"));
+                        gln.setText(jsonObject.getString("Voter_Govt_SNo"));
+                        idcardno.setText(jsonObject.getString("Voter_IdCard_No"));
+                        etfathername.setText(jsonObject.getString("Voter_Father_Husband_Name"));
+                        etfathersaddress.setText(jsonObject.getString("Voter_Genderaddress"));
+                        picode.setText(jsonObject.getString("Voter_PinCode"));
+                        societyname.setText(jsonObject.getString("Voter_Socity_Buildingname"));
+                        wingnumber.setText(jsonObject.getString("Voter_Wing"));
+                        flatnumber.setText(jsonObject.getString("Voter_Flat_No"));
+                        floornumber.setText(jsonObject.getString("Voter_Floor_No"));
+                        streenumber.setText(jsonObject.getString("Voter_Street_No"));
+                        aadhar.setText(jsonObject.getString("Voter_Aadharcard_No"));
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+            requestQueue.add(stringRequest);
+
+
+        }
     }
 
 
@@ -215,6 +275,12 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
             case R.id.logout:
                 Intent intent = new Intent(this, LoginActivity.class);
                 finish();
+                finishAffinity();
+                SharedPreferences.Editor editor=getSharedPreferences("Loginstatus",MODE_PRIVATE).edit();
+                editor.putBoolean("loginstatus",false);
+                editor.clear();
+                editor.apply();
+
                 startActivity(intent);
                 break;
             case R.id.lin2:
@@ -263,7 +329,7 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
             day = selectedDay;
             month = selectedMonth;
             year = selectedYear;
-            dateofbith.setText(selectedDay + "/" + (selectedMonth + 1) + "/"
+            dateofbith.setText((selectedMonth + 1) + "/" + selectedDay + "/"
                     + selectedYear);
         }
     };
@@ -283,94 +349,137 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
             linearpersonalinner.setVisibility(View.VISIBLE);
 
             Toast.makeText(this, "Please Select your gender", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            String radiovalue = ((RadioButton) findViewById(radiogroupmale.getCheckedRadioButtonId())).getText().toString();
+        } else {
+            radiovalue = ((RadioButton) findViewById(radiogroupmale.getCheckedRadioButtonId())).getText().toString();
 
             if (radiovalue.matches("male")) {
-            fathersname = "";
-            fathersaddress = "";
-        } else {
-            fathersname = etfathername.getText().toString();
-            fathersaddress = etfathersaddress.getText().toString();
-        }
+                fathersname = "";
+                fathersaddress = "";
+            } else {
+                fathersname = etfathername.getText().toString();
+                fathersaddress = etfathersaddress.getText().toString();
+            }
 
-        if (occupatonradio.getCheckedRadioButtonId() == -1) {
-            ocuupationradio = "";
-        } else {
-            ocuupationradio = ((RadioButton) findViewById(occupatonradio.getCheckedRadioButtonId())).getText().toString();
-        }
-        if (staystatus.getCheckedRadioButtonId() == -1) {
-            staystatus1 = "";
-        } else {
-            staystatus1 = ((RadioButton) findViewById(staystatus.getCheckedRadioButtonId())).getText().toString();
-        }
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.show();
-        String s = "http://electionapp.uxservices.in/Web_Services/Add_Voter.asmx/Voter_Add?" +
-                "ECandidateFName_eng=" + fname.getText().toString() + "&ECandidateMName_Eng=" + mname.getText().toString()
-                + "&ECandidateLName_Eng=" + lname.getText().toString() +
-                "&ECandidateFName_Marthi=vvv&ECandidateMName_Marthi=jj&ECandidateLName_Marthi=bbb&gender=" + radiovalue +
-                "&ECandidateAddress=" + address.getText().toString() + "&ECandidatePhoneNo=" + mobilenumber.getText().toString()
-                + "&ECandidateImg=jhh&EWardId=123" +
-                "&VoterwardNumber=" + warspinpos + "&age=23&dob=" + dateofbith.getText().toString() + "&houseno=" + housenumber.getText().toString() +
-                "&occupation=" + ocuupationradio + "&occp_details=" + occupationdetails.getText().toString() +
-                "&govt_sno=" + gln.getText().toString() + "&currentstay_status=" + staystatus1 + "&idcardno=" + idcardno.getText().toString()
-                + "&fatherhasbandname=" + fathersname +
-                "&Genderadd=" + fathersaddress + "&Pin_no=" + picode.getText().toString() + "&residentialtype=" + resindentialspinpos +
-                "&regional=" + regionalspinpos + "&caste=" + castespinpos +
-                "&Lang=" + languagespinpos + "&buildingnam=" + societyname.getText().toString() + "&wing_no=" + wingnumber.getText().toString()
-                + "&flatno=" + flatnumber.getText().toString() + "&floorno=" + floornumber.getText().toString() +
-                "&street_no=" + staydetails.getText().toString() + "sdzx" + "&aadharcard_no=" + aadhar.getText().toString() +
-                "&state=mp&distric=" + districspinpos + "&sub_distric=" + subdistrictspinpos + "&cityvilage=" + villagespinpos + "&area_id=" + 1 +
-                "&ward_id=" + warspinpos + "&staydetails=" + staystatus1 + "";
-        System.out.println("asdxz" + s);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, s.replace(" ", "%20"), new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                progressDialog.hide();
-                System.out.println("first" + response);
-                String newString = response.replace("http://electionapp.uxservices.in", "");
-                String newString1 = newString.replace("<string xmlns=\"\">", "");
-                String newString2 = newString1.replace("</string>", "");
-                String newstring3 = newString2.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
-                System.out.println("dasdxaws" + newstring3);
+            if (occupatonradio.getCheckedRadioButtonId() == -1) {
+                ocuupationradio = "";
+            } else {
+                ocuupationradio = ((RadioButton) findViewById(occupatonradio.getCheckedRadioButtonId())).getText().toString();
+            }
+            if (staystatus.getCheckedRadioButtonId() == -1) {
+                staystatus1 = "";
+            } else {
+                staystatus1 = ((RadioButton) findViewById(staystatus.getCheckedRadioButtonId())).getText().toString();
+            }
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.show();
+            /*JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("ECandidateFName_eng", fname.getText().toString());
+                jsonObject.put("ECandidateMName_Eng", mname.getText().toString());
+                jsonObject.put("ECandidateLName_Eng", lname.getText().toString());
+                jsonObject.put("ECandidateFName_Marthi", "");
+                jsonObject.put("ECandidateMName_Marthi", "");
+                jsonObject.put("ECandidateLName_Marthi", "");
+                jsonObject.put("gender", radiovalue);
+                jsonObject.put("ECandidateAddress", address.getText().toString());
+                jsonObject.put("&ECandidatePhoneNo", mobilenumber.getText().toString());
+                jsonObject.put("ECandidateImg", "");
+                jsonObject.put("EWardId", "");
+                jsonObject.put("VoterwardNumber", warspinpos);
+                jsonObject.put("age", "");
+                jsonObject.put("dob", dateofbith.getText().toString());
+                jsonObject.put("houseno", housenumber.getText().toString());
+                jsonObject.put("occupation", ocuupationradio);
+                jsonObject.put("occp_details", occupationdetails.getText().toString());
+                jsonObject.put("govt_sno", gln.getText().toString());
+                jsonObject.put("currentstay_status", staystatus1);
+                jsonObject.put("idcardno", idcardno.getText().toString());
+                jsonObject.put("fatherhasbandname", fathersname);
+                jsonObject.put("Genderadd", fathersaddress);
+                jsonObject.put("Pin_no", picode.getText().toString());
+                jsonObject.put("residentialtype", resindentialspinpos);
+                jsonObject.put("regional", regionalspinpos);
+                jsonObject.put("caste", castespinpos);
+                jsonObject.put("Lang", languagespinpos);
+                jsonObject.put("buildingnam", societyname.getText().toString());
+                jsonObject.put("wing_no", wingnumber.getText().toString());
+                jsonObject.put("flatno", flatnumber.getText().toString());
+                jsonObject.put("floorno", floornumber.getText().toString());
+                jsonObject.put("street_no", staydetails.getText().toString());
+                jsonObject.put("aadharcard_no", aadhar.getText().toString());
+                jsonObject.put("state", "Maharashra");
+                jsonObject.put("distric", districspinpos);
+                jsonObject.put("sub_distric", subdistrictspinpos);
+                jsonObject.put("cityvilage", villagespinpos);
+                jsonObject.put("area_id", areapos);
+                jsonObject.put("ward_id", warspinpos);
+                jsonObject.put("staydetails", staystatus1);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }*/
+            String s = "http://electionapp.uxservices.in/Web_Services/Add_Voter.asmx/Voter_Add?" +
+                    "ECandidateFName_eng=" + fname.getText().toString() + "&ECandidateMName_Eng=" + mname.getText().toString()
+                    + "&ECandidateLName_Eng=" + lname.getText().toString() +
+                    "&ECandidateFName_Marthi=vvv&ECandidateMName_Marthi=jj&ECandidateLName_Marthi=bbb&gender=" + radiovalue +
+                    "&ECandidateAddress=" + address.getText().toString() + "&ECandidatePhoneNo=" + mobilenumber.getText().toString()
+                    + "&ECandidateImg=jhh&EWardId=123" +
+                    "&VoterwardNumber=" + warspinpos + "&age=23&dob=" + dateofbith.getText().toString() + "&houseno=" + housenumber.getText().toString() +
+                    "&occupation=" + ocuupationradio + "&occp_details=" + occupationdetails.getText().toString() +
+                    "&govt_sno=" + gln.getText().toString() + "&currentstay_status=" + staystatus1 + "&idcardno=" + idcardno.getText().toString()
+                    + "&fatherhasbandname=" + fathersname +
+                    "&Genderadd=" + fathersaddress + "&Pin_no=" + picode.getText().toString() + "&residentialtype=" + resindentialspinpos +
+                    "&regional=" + regionalspinpos + "&caste=" + castespinpos +
+                    "&Lang=" + languagespinpos + "&buildingnam=" + societyname.getText().toString() + "&wing_no=" + wingnumber.getText().toString()
+                    + "&flatno=" + flatnumber.getText().toString() + "&floorno=" + floornumber.getText().toString() +
+                    "&street_no=" + staydetails.getText().toString() + "sdzx" + "&aadharcard_no=" + aadhar.getText().toString() +
+                    "&state=mp&distric=" + districspinpos + "&sub_distric=" + subdistrictspinpos + "&cityvilage=" + villagespinpos + "&area_id=" + areapos +
+                    "&ward_id=" + warspinpos + "&staydetails=" + staystatus1 + "";
+            System.out.println(s);
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, s, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    progressDialog.hide();
+                    System.out.println("first" + response);
+                    String newString = response.replace("http://electionapp.uxservices.in", "");
+                    String newString1 = newString.replace("<string xmlns=\"\">", "");
+                    String newString2 = newString1.replace("</string>", "");
+                    String newstring3 = newString2.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
+                    System.out.println("dasdxaws" + newstring3);
 
-                try {
-                    JSONArray jsonArray = new JSONArray(newstring3.replace("<string xmlns=\"/\">", ""));
-                    if (jsonArray.getJSONObject(0).getString("Status").matches("true")) {
-                        progressDialog.hide();
-                        Toast.makeText(AddNewVoter.this, jsonArray.getJSONObject(0).getString("msg"), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(AddNewVoter.this, DashBoard.class);
-                        finish();
-                        startActivity(intent);
-                    } else {
-                        progressDialog.hide();
-                        Toast.makeText(AddNewVoter.this, "please check internet settings", Toast.LENGTH_SHORT).show();
+                    try {
+                        JSONArray jsonArray = new JSONArray(newstring3.replace("<string xmlns=\"/\">", ""));
+                        if (jsonArray.getJSONObject(0).getString("Status").matches("true")) {
+                            progressDialog.hide();
+                            Toast.makeText(AddNewVoter.this, jsonArray.getJSONObject(0).getString("msg"), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(AddNewVoter.this, DashBoard.class);
+                            finish();
+                            startActivity(intent);
+                        } else {
+                            progressDialog.hide();
+                            Toast.makeText(AddNewVoter.this, "please check internet settings", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
+
                 }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    progressDialog.hide();
+                    Toast.makeText(AddNewVoter.this, error.toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
 
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.hide();
-                Toast.makeText(AddNewVoter.this, error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        int socketTimeout = 10000;//30 seconds - change to what you want
-        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-        stringRequest.setRetryPolicy(policy);
-        requestQueue.add(stringRequest);
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            int socketTimeout = 10000;//30 seconds - change to what you want
+            RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+            stringRequest.setRetryPolicy(policy);
+            requestQueue.add(stringRequest);
+        }
     }
-    }
-
-
 
 
     private void loadarea() {
@@ -403,7 +512,7 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
                     areaspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            //  areapos=yourList.get(position).
+                            areapos = yourList.get(position).getElection_Area_id();
                         }
 
                         @Override
@@ -458,11 +567,10 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             try {
-                                if (position==0){
-                                    warspinpos=0;
-                                }
-                                else{
-                                    warspinpos = jsonArray1.getJSONObject(position-1).getInt("WardId");
+                                if (position == 0) {
+                                    warspinpos = 0;
+                                } else {
+                                    warspinpos = jsonArray1.getJSONObject(position - 1).getInt("WardId");
 
                                 }
                                 //    Toast.makeText(AddNewVoter.this, String.valueOf(warspinpos), Toast.LENGTH_SHORT).show();
@@ -523,11 +631,10 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             try {
-                                if (position==0){
-                                    boothspinpos=0;
-                                }
-                                else {
-                                    boothspinpos = jsonArray3.getJSONObject(position-1).getInt("ElectionBoothId");
+                                if (position == 0) {
+                                    boothspinpos = 0;
+                                } else {
+                                    boothspinpos = jsonArray3.getJSONObject(position - 1).getInt("ElectionBoothId");
                                 }
                                 //  Toast.makeText(AddNewVoter.this, String.valueOf(boothspinpos), Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
@@ -585,11 +692,11 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             try {
-                                if (position==0){
-                                    castespinpos=0;
+                                if (position == 0) {
+                                    castespinpos = 0;
+                                } else {
+                                    castespinpos = jsonArray2.getJSONObject(position - 1).getInt("ElectionCasteId");
                                 }
-                                else{
-                                castespinpos = jsonArray2.getJSONObject(position-1).getInt("ElectionCasteId");}
                                 // Toast.makeText(AddNewVoter.this, String.valueOf(castespinpos), Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -646,10 +753,9 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             try {
-                                if (position==0){
-                                    regionalspinpos=0;
-                                }
-                                else {
+                                if (position == 0) {
+                                    regionalspinpos = 0;
+                                } else {
                                     regionalspinpos = jsonArray5.getJSONObject(position - 1).getInt("ERegionalId");
                                 }
                                 //  Toast.makeText(AddNewVoter.this, String.valueOf(regionalspinpos), Toast.LENGTH_SHORT).show();
@@ -709,11 +815,10 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             try {
-                                if (position==0){
-                                    languagespinpos=0;
-                                }
-                                else {
-                                    languagespinpos = jsonArray6.getJSONObject(position-1).getInt("ELanguageId");
+                                if (position == 0) {
+                                    languagespinpos = 0;
+                                } else {
+                                    languagespinpos = jsonArray6.getJSONObject(position - 1).getInt("ELanguageId");
                                 }
                                 // Toast.makeText(AddNewVoter.this, String.valueOf(languagespinpos), Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
@@ -772,11 +877,11 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             try {
-                                if (position==0){
-                                    resindentialspinpos=0;
+                                if (position == 0) {
+                                    resindentialspinpos = 0;
+                                } else {
+                                    resindentialspinpos = jsonArray7.getJSONObject(position - 1).getInt("EResidentialId");
                                 }
-                                else{
-                                resindentialspinpos = jsonArray7.getJSONObject(position-1).getInt("EResidentialId");}
                                 // Toast.makeText(AddNewVoter.this, String.valueOf(resindentialspinpos), Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -835,12 +940,11 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                             try {
-                                if (position==0){
-                                    districspinpos=0;
-                                }
-                                else {
-                                    x = jsonArray8.getJSONObject(position-1).getInt("DistricId");
-                                    districspinpos = jsonArray8.getJSONObject(position-1).getInt("DistricId");
+                                if (position == 0) {
+                                    districspinpos = 0;
+                                } else {
+                                    x = jsonArray8.getJSONObject(position - 1).getInt("DistricId");
+                                    districspinpos = jsonArray8.getJSONObject(position - 1).getInt("DistricId");
                                 }
 
                             } catch (JSONException e) {
@@ -859,7 +963,7 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
                                         final JSONArray jsonArray9 = new JSONArray(jsonArray.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", ""));
                                         System.out.println("ward" + jsonArray9);
 
-                                        JSONObject jsonObject = jsonArray9.getJSONObject(0);
+                                      //  JSONObject jsonObject = jsonArray9.getJSONObject(0);
                                         List<String> list = new ArrayList<String>();
                                         for (int i = 0; i < jsonArray9.length(); i++) {
                                             list.add(jsonArray9.getJSONObject(i).getString("SubDistricName"));
@@ -977,8 +1081,9 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-    private void loadState(){
-        ArrayList<String> strings=new ArrayList<>();
+
+    private void loadState() {
+        ArrayList<String> strings = new ArrayList<>();
         strings.add("Select State");
         strings.add("Maharashtra");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(AddNewVoter.this,
@@ -1003,123 +1108,118 @@ public class AddNewVoter extends AppCompatActivity implements View.OnClickListen
         switch (v.getId()) {
             case R.id.fname:
 
-                            fname.clearFocus();
-                            mname.requestFocus();
+                fname.clearFocus();
+                mname.requestFocus();
 
-                            break;
+                break;
 
 
             case R.id.lname:
 
 
-                            lname.clearFocus();
+                lname.clearFocus();
 
-                            housenumber.requestFocus();
+                housenumber.requestFocus();
 
 
-
-                            break;
-
+                break;
 
 
             case R.id.mname:
 
-                            fname.clearFocus();
-                            lname.requestFocus();
-
+                fname.clearFocus();
+                lname.requestFocus();
 
 
                 break;
             case R.id.housenumber:
 
-                            housenumber.clearFocus();
+                housenumber.clearFocus();
 
-                            idcardno.requestFocus();
-
-
+                idcardno.requestFocus();
 
 
                 break;
             case R.id.idcardnumber:
 
-                            idcardno.clearFocus();
-                            mobilenumber.requestFocus();
+                idcardno.clearFocus();
+                mobilenumber.requestFocus();
 
 
-break;
+                break;
             case R.id.mobilenumber:
 
-                            mobilenumber.clearFocus();
-                            gln.requestFocus();
+                mobilenumber.clearFocus();
+                gln.requestFocus();
 
-break;
+                break;
 
             case R.id.gln:
 
-                            gln.clearFocus();
-                            aadhar.requestFocus();
+                gln.clearFocus();
+                aadhar.requestFocus();
 
                 break;
 
 
             case R.id.address:
 
-                            add.clearFocus();
-                            societyname.requestFocus();
+                add.clearFocus();
+                societyname.requestFocus();
 
                 break;
 
 
             case R.id.societyname:
 
-                            societyname.clearFocus();
-                            floornumber.requestFocus();
+                societyname.clearFocus();
+                floornumber.requestFocus();
 
-                            break;
+                break;
 
 
             case R.id.floornumber:
 
-                            floornumber.clearFocus();
-                            streenumber.requestFocus();
+                floornumber.clearFocus();
+                streenumber.requestFocus();
 
-                            break;
+                break;
 
 
             case R.id.streenumber:
 
-                            streenumber.clearFocus();
-                            wingnumber.requestFocus();
+                streenumber.clearFocus();
+                wingnumber.requestFocus();
 
-                           break;
+                break;
 
             case R.id.wingnumber:
 
-                            wingnumber.clearFocus();
-                            flatnumber.requestFocus();
+                wingnumber.clearFocus();
+                flatnumber.requestFocus();
 
 
-                            break;
+                break;
 
             case R.id.occupationdetails:
 
-                            occupationdetails.clearFocus();
-                            picode.requestFocus();
+                occupationdetails.clearFocus();
+                picode.requestFocus();
 
-                            break;
+                break;
 
             case R.id.pincode:
 
-                            picode.clearFocus();
-                            staydetails.requestFocus();
+                picode.clearFocus();
+                staydetails.requestFocus();
 
-                            break;
+                break;
 
             case R.id.staydetails:
 
-                            staydetails.clearFocus();
-                            sendreq();
-                            break;
+                staydetails.clearFocus();
+                sendreq();
+                break;
 
         }
         return false;

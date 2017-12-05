@@ -30,7 +30,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class Voterlist extends AppCompatActivity {
-ImageView logout;
+    ImageView logout;
     private EditText editText;
 
     @Override
@@ -39,8 +39,8 @@ ImageView logout;
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_voterlist);
-        editText=(EditText)findViewById(R.id.searchkeyword);
-        ImageView button1=(ImageView)findViewById(R.id.searchbutton);
+        editText = (EditText) findViewById(R.id.searchkeyword);
+        ImageView button1 = (ImageView) findViewById(R.id.searchbutton);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +48,7 @@ ImageView logout;
 
             }
         });
-        RecyclerView recyclerView=(RecyclerView)findViewById(R.id.workerrec);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.workerrec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         Button button = (Button) findViewById(R.id.addnewvoter);
         logout = (ImageView) findViewById(R.id.logout);
@@ -56,6 +56,13 @@ ImageView logout;
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Voterlist.this, LoginActivity.class);
+                finish();
+                finishAffinity();
+                SharedPreferences.Editor editor = getSharedPreferences("Loginstatus", MODE_PRIVATE).edit();
+                editor.putBoolean("loginstatus", false);
+                editor.clear();
+                editor.apply();
+
                 startActivity(intent);
             }
         });
@@ -63,6 +70,7 @@ ImageView logout;
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Voterlist.this, AddNewVoter.class);
+                intent.putExtra("voter_id", 0);
                 startActivity(intent);
 
             }
@@ -73,7 +81,7 @@ ImageView logout;
 
         SharedPreferences sharedPreference2 = getSharedPreferences("userid", MODE_PRIVATE);
         int user_id2 = sharedPreference2.getInt("user_id", 1);
-        String url2 = "http://electionapp.uxservices.in/Web_Services/Search_Voter.asmx/search?user_id=" + user_id2+"&search="+editText.getText().toString();
+        String url2 = "http://electionapp.uxservices.in/Web_Services/Search_Voter.asmx/search?user_id=" + user_id2 + "&search=" + editText.getText().toString();
         System.out.println("thisurl" + url2);
         StringRequest stringRequest2 = new StringRequest(Request.Method.GET, url2, new Response.Listener<String>() {
             @Override
@@ -82,15 +90,16 @@ ImageView logout;
                 try {
                     System.out.println("this" + jsonArray.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", ""));
 
-                    JSONObject jsonObject = new JSONObject(jsonArray.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "").replace("<string xmlns=\"http://electionapp.uxservices.in\">",""));
+                    JSONObject jsonObject = new JSONObject(jsonArray.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "").replace("<string xmlns=\"http://electionapp.uxservices.in\">", ""));
                     JSONArray jsonArray1 = jsonObject.getJSONArray("data");
-                    Type listType = new TypeToken<List<VoterModel>>() {}.getType();
-                    List<VoterModel> yourList = new Gson().fromJson(String.valueOf(jsonArray1),listType);
+                    Type listType = new TypeToken<List<VoterModel>>() {
+                    }.getType();
+                    List<VoterModel> yourList = new Gson().fromJson(String.valueOf(jsonArray1), listType);
                     SharedPreferences sharedPreferences = getSharedPreferences("userid", MODE_PRIVATE);
                     int id = sharedPreferences.getInt("user_id", 1);
-                    VoterAdapter areAdapter=new VoterAdapter(Voterlist.this,yourList);
-                    RecyclerView recyclerView=(RecyclerView)findViewById(R.id.workerrec);
-                    RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(Voterlist.this);
+                    VoterAdapter areAdapter = new VoterAdapter(Voterlist.this, yourList);
+                    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.workerrec);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Voterlist.this);
                     recyclerView.setLayoutManager(layoutManager);
                     recyclerView.setAdapter(areAdapter);
 
@@ -127,15 +136,16 @@ ImageView logout;
                 try {
                     System.out.println("this" + jsonArray.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", ""));
 
-                    JSONArray jsonArray1 = new JSONArray(jsonArray.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "").replace("<string xmlns=\"http://tempuri.org/\">",""));
+                    JSONArray jsonArray1 = new JSONArray(jsonArray.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "").replace("<string xmlns=\"http://tempuri.org/\">", ""));
                     JSONObject jsonObject = jsonArray1.getJSONObject(0);
-                    Type listType = new TypeToken<List<VoterModel>>() {}.getType();
-                    List<VoterModel> yourList = new Gson().fromJson(String.valueOf(jsonArray1),listType);
+                    Type listType = new TypeToken<List<VoterModel>>() {
+                    }.getType();
+                    List<VoterModel> yourList = new Gson().fromJson(String.valueOf(jsonArray1), listType);
                     SharedPreferences sharedPreferences = getSharedPreferences("userid", MODE_PRIVATE);
                     int id = sharedPreferences.getInt("user_id", 1);
-                    VoterAdapter areAdapter=new VoterAdapter(Voterlist.this,yourList);
-                    RecyclerView recyclerView=(RecyclerView)findViewById(R.id.workerrec);
-                    RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(Voterlist.this);
+                    VoterAdapter areAdapter = new VoterAdapter(Voterlist.this, yourList);
+                    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.workerrec);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Voterlist.this);
                     recyclerView.setLayoutManager(layoutManager);
                     recyclerView.setAdapter(areAdapter);
 
