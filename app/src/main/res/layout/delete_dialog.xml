@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:textSize="16dp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="Delete Voter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+<TextView
+    android:textSize="16dp"
+    android:gravity="center"
+    android:layout_margin="20dp"
+    android:textColor="@color/black"
+    android:text="Are you sure to want to delete this voter?"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:weightSum="10"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/cancel"
+            android:background="@drawable/edit_text_background"
+            android:layout_weight="5"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:text="CANCEL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/delete"
+            android:background="@color/colorPrimary"
+            android:layout_weight="5"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Delete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>

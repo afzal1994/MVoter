@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- The main content view -->
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    android:layout_height="match_parent"
+    tools:context="com.example.mohdafzal.voter.Voterlist">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,40 +26,18 @@
     android:orientation="vertical"
     android:background="@color/colorPrimary"
     android:layout_height="match_parent"
-    tools:context="com.example.mohdafzal.mvoter.Voterlist">
+    tools:context="com.example.mohdafzal.voter.Voterlist">
     <LinearLayout
         android:id="@+id/lin"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <RelativeLayout
-            android:background="@color/colorAccent"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:textSize="25dp"
-                android:textColor="#000"
-                android:text="Dashboard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/logout"
-                android:layout_marginRight="10dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/power"
-                android:layout_alignParentRight="true"
-                android:layout_width="25dp"
-                android:layout_height="25dp" />
-        </RelativeLayout>
         <Button
             android:id="@+id/addnewvoter"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:textColor="#fff"
-            android:background="#5cb85c"
+            android:background="@drawable/rippel"
             android:layout_gravity="end"
             android:text="+ Add New Voter"
             android:layout_width="150dp"
@@ -98,3 +96,35 @@
 
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>
+    <include
+        layout="@layout/blurredloader"
+        android:id="@+id/blurredloader"/>
+</RelativeLayout>
+    </FrameLayout>
+<RelativeLayout
+android:id="@+id/drawer"
+android:layout_width="260dp"
+android:layout_height="match_parent"
+android:layout_gravity="start"
+android:background="@color/colorPrimary"
+android:orientation="vertical" >
+
+<ImageView
+    android:layout_margin="40dp"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/image_view"
+    android:layout_width="130dp"
+    android:layout_height="100dp"
+    android:background="@drawable/logo" />
+<ListView
+    android:id="@+id/left_drawer"
+    android:layout_below="@+id/image_view"
+    android:layout_width="260dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:choiceMode="singleChoice"
+    android:divider="@color/black"
+    android:dividerHeight="1dp"
+    android:background="@color/white"/>
+</RelativeLayout>
+    </android.support.v4.widget.DrawerLayout>

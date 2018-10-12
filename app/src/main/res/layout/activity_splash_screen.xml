@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#bc2315"
-    tools:context="com.example.mohdafzal.mvoter.SplashScreen">
+    tools:context="com.example.mohdafzal.voter.SplashScreen">
 <ImageView
     android:layout_centerInParent="true"
     android:scaleType="fitXY"

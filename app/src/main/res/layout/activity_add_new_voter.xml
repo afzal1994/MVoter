@@ -1,704 +1,1045 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="com.example.mohdafzal.mvoter.AddNewVoter">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="com.example.mohdafzal.mvoter.AddNewVoter">
-    <LinearLayout
-        android:id="@+id/lin"
-        android:orientation="vertical"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:background="@color/colorAccent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.NestedScrollView
+
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:textSize="25dp"
-                android:textColor="#000"
-                android:text="Add New Voter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:id="@+id/logout"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            tools:context="com.example.mohdafzal.voter.AddNewVoter">
 
-                android:layout_marginRight="10dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/power"
-                android:layout_alignParentRight="true"
-                android:layout_width="25dp"
-                android:layout_height="25dp" />
-        </RelativeLayout>
-
-        <EditText
-            android:maxLines="1"
-android:id="@+id/editTextSearch"
-            android:drawablePadding="10dp"
-            android:drawableRight="@drawable/search"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            android:hint="Search Name Phone Area Etc..."
-            android:background="#fff"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/lin2"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/lin"
-        android:background="@color/colorPrimaryDark"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textSize="18dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="#fff"
-            android:layout_width="wrap_content"
-            android:text="Personal Details"
-            android:layout_height="45dp" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:visibility="visible"
-        android:background="#fff"
-        android:id="@+id/lin5"
-        android:orientation="vertical"
-        android:layout_below="@+id/lin2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:textColor="#fff"
-            android:background="#5cb85c"
-            android:text="Edit"
-            android:layout_gravity="end"
-            android:layout_width="60dp"
-            android:layout_height="30dp" />
-        <EditText
-            android:maxLines="1"
-            android:imeOptions="actionNext"
-android:singleLine="true"
-            android:id="@+id/fname"
-android:hint="First Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <requestFocus>
-
-        </requestFocus>
-        <EditText
-            android:singleLine="true"
-
-            android:maxLines="1"
-            android:imeOptions="actionNext"
-
-            android:id="@+id/mname"
-            android:textColorHighlight="#000"
-            android:hint="Middle Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" /> <EditText
-        android:id="@+id/lname"
-        android:maxLines="1"
-        android:singleLine="true"
-
-        android:hint="Last Name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-        <RadioGroup
-            android:id="@+id/radiogrupgender"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-           <RadioButton
-               android:buttonTint="@color/colorPrimaryDark"
-               android:text="Male"
-               android:layout_marginLeft="20dp"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content" />
-            <RadioButton
-                android:id="@+id/rdfemale"
-                android:buttonTint="@color/colorPrimaryDark"
-
-                android:text="Female"
-
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RadioGroup>
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/feamlelinear"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/custom_border"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:maxLines="1"
-                android:imeOptions="actionNext"
-                android:singleLine="true"
-
-                android:id="@+id/fathersname"
-                android:textColorHighlight="#000"
-                android:hint="Fathers Name"
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:maxLines="1"
-                android:imeOptions="actionNext"
-                android:singleLine="true"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                tools:context="com.example.mohdafzal.voter.AddNewVoter">
 
-                android:id="@+id/addressfather"
-                android:textColorHighlight="#000"
-                android:hint="Enter Fathers Address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/lin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                </LinearLayout>
 
-        </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/lin2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lin"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorPrimaryDark">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="Personal Details"
+                        android:textColor="#fff"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lin2"
+                    android:background="#fff"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <EditText
+                        android:id="@+id/fname"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="First Name"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true" />
+
+                    <requestFocus>
+
+                    </requestFocus>
+
+                    <EditText
+                        android:id="@+id/mname"
+                        android:layout_width="match_parent"
+
+
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+
+                        android:hint="Middle Name"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true" />
+
+                    <EditText
+                        android:id="@+id/lname"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="Last Name"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true" />
+                    <TableRow
+                        android:visibility="gone"
+                        android:layout_marginRight="10dp"
+                        android:layout_height="40dp"
+                        android:layout_width="match_parent"
+                        android:id="@+id/upvibhagSpinnerRow"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:gravity="center_vertical"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5"
+android:layout_width="match_parent"
+                            android:text="Select Upvibhag"
+                            android:textColor="#000"
+                            android:textSize="15dp" />
 <LinearLayout
-    android:weightSum="10"
-    android:orientation="horizontal"
+    android:layout_gravity="center_vertical"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <EditText
-        android:singleLine="true"
+    android:layout_weight="5"
+    android:background="@drawable/edit_text_background">
+                        <Spinner
+                            android:id="@+id/upvibhagSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp"
 
-        android:editable="false"
-        android:maxLines="1"
-android:layout_weight="7"
-        android:id="@+id/dateofbirth"
-        android:textColorHighlight="#000"
-        android:hint="Date of Birth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <ImageView
-        android:id="@+id/datepicker"
-        android:backgroundTint="@color/colorPrimary"
-        android:background="@drawable/datepicker"
-        android:layout_gravity="center"
-android:layout_marginLeft="30dp"
-        android:layout_width="25dp"
-        android:layout_height="25dp" />
-
+                            android:hint="First Name" />
 </LinearLayout>
+                    </TableRow>
 
-        <EditText
-            android:maxLines="1"
-            android:imeOptions="actionNext"
-            android:singleLine="true"
+                    <RadioGroup
+                        android:id="@+id/radiogrupgender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-            android:id="@+id/housenumber"
-            android:textColorHighlight="#000"
-            android:hint="House number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:maxLines="1"
-            android:imeOptions="actionNext"
-            android:singleLine="true"
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:buttonTint="@color/colorPrimaryDark"
+                            android:text="Male" />
 
-            android:id="@+id/idcardnumber"
-            android:textColorHighlight="#000"
-            android:hint="ID Card No."
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:maxLines="1"
-            android:imeOptions="actionNext"
-            android:singleLine="true"
+                        <RadioButton
+                            android:id="@+id/rdfemale"
+                            android:layout_width="wrap_content"
 
-            android:id="@+id/mobilenumber"
-            android:textColorHighlight="#000"
-            android:hint="Mobile number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:maxLines="1"
-            android:imeOptions="actionNext"
-            android:singleLine="true"
+                            android:layout_height="wrap_content"
 
-            android:inputType="number"
-            android:id="@+id/gln"
-        android:hint="Gov. List Number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" /> <EditText
-        android:inputType="number"
-        android:maxLines="1"
-        android:imeOptions="actionNext"
-        android:singleLine="true"
+                            android:layout_marginLeft="20dp"
+                            android:buttonTint="@color/colorPrimaryDark"
+                            android:text="Female" />
+                    </RadioGroup>
 
-        android:id="@+id/aadharcard"
-        android:hint="Adhar Card Number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/feamlelinear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
 
-            <TableRow
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:weightSum="10">
-              <TextView
-                  android:layout_weight="1"
+                        <EditText
+                            android:id="@+id/fathersname"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
 
-                  android:textColor="#000"
-                  android:textSize="15dp"
-                  android:text="Select ward"
-                  />
-                <Spinner
-                    android:id="@+id/spinward"
-                    android:layout_weight="9"
-                    android:layout_marginBottom="10dp"
-                    android:hint="First Name"
+                            android:background="@drawable/edit_text_background"
+                            android:hint="First Name"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true"
+                            android:textColorHighlight="#000" />
+
+                        <EditText
+                            android:id="@+id/femiddlename"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+
+                            android:background="@drawable/edit_text_background"
+                            android:hint="Female middle name"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true"
+                            android:textColorHighlight="#000" />
+
+                        <EditText
+                            android:id="@+id/felastname"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+
+                            android:background="@drawable/edit_text_background"
+                            android:hint="Female last name"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true"
+                            android:textColorHighlight="#000" />
+
+                        <EditText
+                            android:id="@+id/addressfather"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_background"
+                            android:hint="Female House number"                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                             />
+
+                        <EditText
+                            android:id="@+id/femalehousenumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_background"
+                            android:hint="Female House number"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true"
+                            android:textColorHighlight="#000" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <EditText
+                            android:id="@+id/dateofbirth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="7"
+                            android:background="@drawable/edit_text_background"
+                            android:editable="false"
+                            android:hint="Date of Birth"
+                            android:maxLines="1"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true"
+                            android:textColorHighlight="#000" />
+
+                        <ImageView
+                            android:id="@+id/datepicker"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="30dp"
+                            android:background="@drawable/datepicker"
+                            android:backgroundTint="@color/colorPrimary" />
+
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/address"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+
+                        android:background="@drawable/edit_text_background"
+                        android:hint="Address"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColorHighlight="#000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Is Voter ID Available"
+                        android:textColor="#000"
+                        android:textSize="15dp" />
+
+                    <RadioGroup
+                        android:id="@+id/voteridstatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/nooption"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:buttonTint="@color/colorPrimaryDark"
+                            android:text="YES" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="20dp"
+                            android:buttonTint="@color/colorPrimaryDark"
+                            android:text="NO" />
+
+                    </RadioGroup>
+
+                    <EditText
+                        android:id="@+id/idcardnumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+
+                        android:hint="ID Card No."
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColorHighlight="#000"
+                        android:visibility="gone" />
+
+                    <EditText
+                        android:id="@+id/mobilenumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+
+                        android:hint="Mobile number"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColorHighlight="#000" />
+
+                    <EditText
+                        android:id="@+id/gln"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+
+                        android:hint="Serial number"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:visibility="visible" />
+                    <EditText
+                        android:id="@+id/booth_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+
+                        android:hint="Booth number"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:visibility="visible" />
+
+                    <EditText
+                        android:id="@+id/aadharcard"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="Adhar Card Number"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <TableRow
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:visibility="gone"
+                            android:weightSum="10">
+
+                            <TextView
+                                android:layout_weight="1"
+
+                                android:text="Prefered Party"
+                                android:textColor="#000"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/spinparty"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="9"
+                                android:hint="First Name" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:weightSum="10">
+
+                            <TextView
+                                android:layout_weight="1"
+
+                                android:text="Select ward"
+                                android:textColor="#000"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/spinward"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="9"
+                                android:hint="First Name" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:weightSum="10">
+
+                            <TextView
+                                android:layout_weight="1"
+
+                                android:text="Select Area"
+                                android:textColor="#000"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/spinarea"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="9"
+                                android:entries="@array/spinnerItems"
+                                android:hint="First Name" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:weightSum="10">
+
+                            <TextView
+                                android:layout_weight="1"
+
+                                android:text="Select Boothe"
+                                android:textColor="#000"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/spinbooth"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="9"
+                                android:hint="First Name" />
+                        </TableRow>
+                    </TableLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin6"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </TableRow>
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lin5"
+                    android:background="#fff"
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-            <TableRow
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:weightSum="10">
-                <TextView
-                    android:layout_weight="1"
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
 
-                    android:textColor="#000"
-                    android:textSize="15dp"
-                    android:text="Select Area"
-                    />
-                <Spinner
-                    android:id="@+id/spinarea"
-                    android:layout_weight="9"
-                    android:entries="@array/spinnerItems"
-                    android:layout_marginBottom="10dp"
-                    android:hint="First Name"
+                        <TableRow
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:weightSum="10">
+
+                            <TextView
+                                android:layout_weight="1"
+
+                                android:text="Select Residential"
+                                android:textColor="#000"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/spinresidential"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="9"
+                                android:hint="First Name" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:weightSum="10">
+
+                            <TextView
+                                android:layout_weight="1"
+
+                                android:text="Select Language"
+                                android:textColor="#000"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/spinlanguage"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="9"
+                                android:hint="First Name" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:weightSum="10">
+
+                            <TextView
+                                android:layout_weight="1"
+
+                                android:text="Select Regional"
+                                android:textColor="#000"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/spinregion"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="9"
+                                android:hint="First Name" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:weightSum="10">
+
+                            <TextView
+                                android:layout_weight="1"
+
+                                android:text="Select Caste"
+                                android:textColor="#000"
+                                android:textSize="15dp" />
+
+                            <Spinner
+                                android:id="@+id/spincaste"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="9"
+                                android:hint="First Name" />
+                        </TableRow>
+                    </TableLayout>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+
+                        android:layout_gravity="top"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+                        android:gravity="top"
+                        android:hint="EnterAddress"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+
+                        android:singleLine="true" />
+
+                    <EditText
+                        android:id="@+id/societyname"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="Society/Building Name"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true" />
+
+                    <EditText
+                        android:id="@+id/floornumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="Floor Number"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:visibility="gone" />
+
+                    <EditText
+                        android:id="@+id/streenumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="Street Number"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:visibility="gone" />
+
+                    <EditText
+                        android:id="@+id/wingnumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="Wing number"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true" />
+
+                    <EditText
+                        android:id="@+id/flatnumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="Flat Number"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin7"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </TableRow>        <TableRow
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:weightSum="10">
-            <TextView
-                android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lin6"
+                    android:background="#fff"
+                    android:orientation="vertical"
+                    android:visibility="visible">
 
-                android:textColor="#000"
-                android:textSize="15dp"
-                android:text="Select Boothe"
-                />
-            <Spinner
-                android:id="@+id/spinbooth"
-                android:layout_weight="9"
-                android:layout_marginBottom="10dp"
-                android:hint="First Name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </TableRow>
-        </TableLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
 
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/lin3"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/lin5"
-        android:background="@color/colorPrimaryDark"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="5"
+                            android:text="Occupation"
+                            android:textColor="#000"
+                            android:textSize="15dp" />
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textSize="18dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="#fff"
-            android:layout_width="wrap_content"
-            android:text="Address"
-            android:layout_height="45dp" />
+                        <Spinner
+                            android:id="@+id/spinnerOccupation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:entries="@array/select_profession"
+                            android:orientation="horizontal">
 
-    </LinearLayout>
-    <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/lin6"
-        android:background="#fff"
-        android:orientation="vertical"
-        android:layout_below="@id/lin3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                        </Spinner>
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                    </LinearLayout>
 
-            <TableRow
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:weightSum="10">
-                <TextView
-                    android:layout_weight="1"
+                    <LinearLayout
+                        android:id="@+id/businessVisibilityLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
 
-                    android:textColor="#000"
-                    android:textSize="15dp"
-                    android:text="Select Residential"
-                    />
-                <Spinner
-                    android:id="@+id/spinresidential"
-                    android:layout_weight="9"
-                    android:layout_marginBottom="10dp"
-                    android:hint="First Name"
+                        <EditText
+                            android:id="@+id/businessFirstField"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_background"
+                            android:hint="Company, Office or Collage name"
+                            android:imeOptions="actionNext"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true" />
+
+                        <EditText
+                            android:id="@+id/businessSecondField"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_background"
+                            android:hint="shop/House / Bldg Name, area name"
+                            android:imeOptions="actionNext"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true" />
+
+                        <EditText
+                            android:id="@+id/businessThirdField"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_background"
+                            android:hint="Street name/ landmark"
+                            android:imeOptions="actionNext"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true" />
+
+                        <EditText
+                            android:id="@+id/businessFourthField"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_background"
+                            android:hint="city / Grampanchyat / nagar palika Name"
+                            android:imeOptions="actionNext"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="30">
+
+                            <EditText
+                                android:id="@+id/bnusinessTaluka"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="10"
+                                android:background="@drawable/edit_text_background"
+                                android:hint="Taluka"
+                                android:imeOptions="actionNext"
+                                android:paddingLeft="10dp"
+                                android:singleLine="true" />
+
+                            <EditText
+                                android:id="@+id/buisnessDistrict"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="10"
+                                android:background="@drawable/edit_text_background"
+                                android:hint="District"
+                                android:imeOptions="actionNext"
+                                android:paddingLeft="10dp"
+                                android:singleLine="true" />
+
+                            <EditText
+                                android:id="@+id/buisnessState"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="10"
+                                android:background="@drawable/edit_text_background"
+                                android:hint="State"
+                                android:imeOptions="actionNext"
+                                android:paddingLeft="10dp"
+                                android:singleLine="true" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Current Stay Stautus(Outsiders or Not)"
+                        android:textColor="#000"
+                        android:textSize="15dp" />
+
+                    <RadioGroup
+                        android:id="@+id/staystatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/stayYes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:buttonTint="@color/colorPrimaryDark"
+                            android:text="YES" />
+
+                        <RadioButton
+                            android:id="@+id/stayNo"
+                            android:layout_width="wrap_content"
+
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="20dp"
+                            android:buttonTint="@color/colorPrimaryDark"
+                            android:text="NO" />
+
+                    </RadioGroup>
+
+                    <LinearLayout
+
+                        android:id="@+id/outOfTownVisibilityLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/outOfTownFirstField"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_background"
+                            android:hint="House / Bldg Name, area name"
+                            android:imeOptions="actionNext"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true" />
+
+                        <EditText
+                            android:id="@+id/outOfTownSecondField"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_background"
+                            android:hint="Street name/ landmark"
+                            android:imeOptions="actionNext"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true" />
+
+                        <EditText
+                            android:id="@+id/outOfTownThirdField"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edit_text_background"
+                            android:hint="city / Grampanchyat / nagar palika Name"
+                            android:imeOptions="actionNext"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="30">
+
+                            <EditText
+                                android:id="@+id/outOfTownTaluka"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="10"
+                                android:background="@drawable/edit_text_background"
+                                android:hint="Taluka"
+                                android:imeOptions="actionNext"
+                                android:paddingLeft="10dp"
+                                android:singleLine="true" />
+
+                            <EditText
+                                android:id="@+id/outOfTownDistrict"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="10"
+                                android:background="@drawable/edit_text_background"
+                                android:hint="District"
+                                android:imeOptions="actionNext"
+                                android:paddingLeft="10dp"
+                                android:singleLine="true" />
+
+                            <EditText
+                                android:id="@+id/outOfTownState"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="10"
+                                android:background="@drawable/edit_text_background"
+                                android:hint="State"
+                                android:imeOptions="actionNext"
+                                android:paddingLeft="10dp"
+                                android:singleLine="true" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/add"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </TableRow>
-
-            <TableRow
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:weightSum="10">
-                <TextView
-                    android:layout_weight="1"
-
-                    android:textColor="#000"
-                    android:textSize="15dp"
-                    android:text="Select Language"
-                    />
-                <Spinner
-                    android:id="@+id/spinlanguage"
-                    android:layout_weight="9"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/lin7"
                     android:layout_marginBottom="10dp"
-                    android:hint="First Name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </TableRow>        <TableRow
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:weightSum="10">
-            <TextView
-                android:layout_weight="1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rippel"
+                    android:text="Update"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
 
-                android:textColor="#000"
-                android:textSize="15dp"
-                android:text="Select Regional"
-                />
-            <Spinner
-                android:id="@+id/spinregion"
-                android:layout_weight="9"
-                android:layout_marginBottom="10dp"
-                android:hint="First Name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </TableRow>
-            <TableRow
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:weightSum="10">
-                <TextView
-                    android:layout_weight="1"
+        </android.support.v4.widget.NestedScrollView>
+    </FrameLayout>
 
-                    android:textColor="#000"
-                    android:textSize="15dp"
-                    android:text="Select Caste"
-                    />
-                <Spinner
-                    android:id="@+id/spincaste"
-                    android:layout_weight="9"
-                    android:layout_marginBottom="10dp"
-                    android:hint="First Name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </TableRow>
-        </TableLayout>
+    <RelativeLayout
+        android:id="@+id/drawer"
+        android:layout_width="260dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
 
-<EditText
-    android:imeOptions="actionNext"
-    android:singleLine="true"
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="40dp"
+            android:background="@drawable/logo" />
 
-    android:maxLines="1"
-android:id="@+id/address"
-    android:paddingTop="10dp"
-    android:paddingLeft="10dp"
-    android:gravity="top"
-    android:layout_gravity="top"
-    android:layout_marginRight="10dp"
-    android:layout_marginLeft="10dp"
-    android:background="@drawable/custom_border"
-    android:hint="EnterAddress"
-    android:layout_marginTop="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="80dp" />
-        <EditText
-            android:imeOptions="actionNext"
-            android:singleLine="true"
-
-            android:maxLines="1"
-android:id="@+id/societyname"
-            android:hint="Society/Building Name"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:singleLine="true"
-            android:imeOptions="actionNext"
-            android:maxLines="1"
-android:id="@+id/floornumber"
-            android:hint="Floor Number"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-        <EditText
-            android:imeOptions="actionNext"
-            android:maxLines="1"
-            android:singleLine="true"
-android:id="@+id/streenumber"
-            android:hint="Street Number"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:maxLines="1"
-            android:singleLine="true"
-            android:imeOptions="actionNext"
-android:id="@+id/wingnumber"
-            android:hint="Wing number"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:maxLines="1"
-android:id="@+id/flatnumber"
-            android:imeOptions="actionNext"
-            android:hint="Flat Number"
-            android:singleLine="true"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/lin4"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/lin6"
-        android:background="@color/colorPrimaryDark"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textSize="18dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="#fff"
-            android:layout_width="wrap_content"
-            android:text="Additional Details"
-            android:layout_height="45dp" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/lin7"
-        android:visibility="gone"
-        android:orientation="vertical"
-        android:background="#fff"
-        android:layout_below="@+id/lin4"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:textSize="15dp"
-            android:textColor="#000"
-            android:text="Occupation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <RadioGroup
-            android:id="@+id/occupation"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RadioButton
-                android:buttonTint="@color/colorPrimaryDark"
-                android:text="Company"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <RadioButton
-                android:buttonTint="@color/colorPrimaryDark"
-
-                android:text="Buisness"
-
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <RadioButton
-                android:buttonTint="@color/colorPrimaryDark"
-
-                android:text="Education"
-
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RadioGroup>
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:textSize="15dp"
-            android:textColor="#000"
-            android:text="Current Stay Stautus(Outsiders or Not)"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <RadioGroup
-            android:id="@+id/staystatus"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RadioButton
-                android:buttonTint="@color/colorPrimaryDark"
-                android:text="YES"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <RadioButton
-                android:buttonTint="@color/colorPrimaryDark"
-
-                android:text="NO"
-
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </RadioGroup>
-        <EditText
-            android:id="@+id/occupationdetails"
-            android:imeOptions="actionNext"
-            android:hint="Occupation Details"
-            android:singleLine="true"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:id="@+id/pincode"
-            android:imeOptions="actionNext"
-            android:hint="Pincode"
-            android:singleLine="true"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:id="@+id/staydetails"
-            android:imeOptions="actionNext"
-            android:singleLine="true"
-            android:hint="Current Stay Details"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TableRow
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:weightSum="10">
-                <TextView
-                    android:layout_weight="1"
-
-                    android:textColor="#000"
-                    android:textSize="15dp"
-                    android:text="Select State"
-                    />
-                <Spinner
-                    android:id="@+id/spinstate"
-                    android:layout_weight="9"
-                    android:layout_marginBottom="10dp"
-                    android:hint="First Name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </TableRow>
-
-            <TableRow
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:weightSum="10">
-                <TextView
-                    android:layout_weight="1"
-
-                    android:textColor="#000"
-                    android:textSize="15dp"
-                    android:text="Select District"
-                    />
-                <Spinner
-                    android:id="@+id/spindistric"
-                    android:layout_weight="9"
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </TableRow>
-            <TableRow
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:weightSum="10">
-            <TextView
-                android:layout_weight="1"
-
-                android:textColor="#000"
-                android:textSize="15dp"
-                android:text="Select Sub-District"
-                />
-            <Spinner
-                android:id="@+id/spinsubdistrict"
-                android:layout_weight="9"
-                android:layout_marginBottom="10dp"
-                android:hint="First Name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </TableRow>
-            <TableRow
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:weightSum="10">
-                <TextView
-                    android:layout_weight="1"
-
-                    android:textColor="#000"
-                    android:textSize="15dp"
-                    android:text="Select Village"
-                    />
-                <Spinner
-                    android:id="@+id/spinvillage"
-                    android:layout_weight="9"
-                    android:layout_marginBottom="10dp"
-                    android:hint="First Name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </TableRow>
-        </TableLayout>
-    </LinearLayout>
-    <Button
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/lin7"
-        android:text="ADD"
-        android:id="@+id/add"
-        android:layout_alignParentBottom="true"
-        android:background="#5cb85c"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
-
-</android.support.v4.widget.NestedScrollView>
+        <ListView
+            android:id="@+id/left_drawer"
+            android:layout_width="260dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/image_view"
+            android:layout_gravity="start"
+            android:background="@color/white"
+            android:choiceMode="singleChoice"
+            android:divider="@color/black"
+            android:dividerHeight="1dp" />
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>

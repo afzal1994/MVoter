@@ -7,4 +7,82 @@
         <item>KoreGaon</item>
         <item>Chinchwad</item>
     </string-array>
+    <array name="states">
+        <item>Select State</item>
+        <item>Maharashtra</item>
+
+    </array>
+    <string name="API_KEY">AIzaSyAH0M552mDHkoelToaENKRXnKMXCcQ7Q3I</string>
+    <array name="select_profession">
+        <item>Select Profession</item>
+
+        <item>Business</item>
+        <item>Retired</item>
+
+        <item>Employee</item>
+        <item>Learning</item>
+        <item>House Wife</item>
+        <item>No Job</item>
+
+    </array>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="nav_drawer_items">
+        <item>Home</item>
+        <item>Upvibhag</item>
+        <item>All Voters</item>
+        <item>Out Of Town</item>
+        <item>Voting Day</item>
+
+
+        <!-- <item>Third</item>
+        <item>Fourth</item>
+        <item>Fifth</item>
+        <item>Sixth</item> -->
+    </string-array>
+    <string-array name="nav_drawer_items_new">
+        <item>Home</item>
+        <item>All Voters</item>
+        <item>Add New Voter</item>
+        <item>Voting Day</item>
+
+
+        <!-- <item>Third</item>
+        <item>Fourth</item>
+        <item>Fifth</item>
+        <item>Sixth</item> -->
+    </string-array>
+
+    <array name="nav_drawer_icons">
+        <item>@drawable/home</item>
+        <item>@drawable/star</item>
+        <item>@drawable/star</item>
+        <item>@drawable/star</item>
+        <item>@drawable/star</item>
+
+
+        <!--
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        -->
+
+    </array>
+    <array name="nav_drawer_icons_new">
+        <item>@drawable/home</item>
+        <item>@drawable/star</item>
+        <item>@drawable/star</item>
+        <item>@drawable/star</item>
+
+
+        <!--
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        -->
+
+    </array>
 </resources>
