@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,40 +8,61 @@
     <!-- The main content view -->
     <FrameLayout
 
-        android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
             android:orientation="vertical"
-            tools:context="com.example.mohdafzal.voter.Voterlist">
+            tools:context=".activities.Voterlist">
 
             <include
                 android:id="@+id/blurredloader"
                 layout="@layout/blurredloader" />
 
-            <TextView
-                android:id="@+id/text"
+            <android.support.v7.widget.CardView
+                android:id="@+id/card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:gravity="center"
-                android:text="Total Out of town votes :80"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
+                android:layout_height="40dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/upvibhagName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
+
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/upvibhagRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/text"
-                android:layout_marginBottom="100dp"
+                android:layout_below="@+id/card"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="100dp"
                 android:background="@color/white"
                 android:layoutAnimation="@anim/layout_animated">
 

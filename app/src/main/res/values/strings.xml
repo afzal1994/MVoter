@@ -7,12 +7,6 @@
         <item>KoreGaon</item>
         <item>Chinchwad</item>
     </string-array>
-    <array name="states">
-        <item>Select State</item>
-        <item>Maharashtra</item>
-
-    </array>
-    <string name="API_KEY">AIzaSyAH0M552mDHkoelToaENKRXnKMXCcQ7Q3I</string>
     <array name="select_profession">
         <item>Select Profession</item>
 
@@ -25,7 +19,6 @@
         <item>No Job</item>
 
     </array>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
     <string-array name="nav_drawer_items">

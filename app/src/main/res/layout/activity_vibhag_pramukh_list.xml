@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
-    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <!-- The main content view -->
     <FrameLayout
-        android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
+
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:orientation="vertical"
             android:layout_height="match_parent"
-            tools:context="com.example.mohdafzal.voter.Voterlist">
+            android:orientation="vertical"
+            tools:context=".activities.Voterlist">
 
             <TextView
-                android:textStyle="bold"
                 android:id="@+id/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -28,13 +25,15 @@
                 android:gravity="center"
                 android:text="Out Of Town Voters"
                 android:textColor="@color/black"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/text1"
-                android:layout_below="@+id/text"
-
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/text"
                 android:gravity="center"
                 android:text="Upvibhag wise"
                 android:textColor="@color/black"
@@ -42,44 +41,47 @@
 
             <android.support.v7.widget.RecyclerView
 
-                android:layout_below="@+id/text1"
-                android:layoutAnimation="@anim/layout_animated"
                 android:id="@+id/upvibhagRecycler"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_below="@+id/text1"
+                android:layout_marginTop="10dp"
+                android:layoutAnimation="@anim/layout_animated">
 
 
             </android.support.v7.widget.RecyclerView>
+
             <include
-                layout="@layout/blurredloader"
-                android:id="@+id/blurredloader"/>
+                android:id="@+id/blurredloader"
+                layout="@layout/blurredloader" />
         </RelativeLayout>
     </FrameLayout>
+
     <RelativeLayout
         android:id="@+id/drawer"
         android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/colorPrimary"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <ImageView
-            android:layout_margin="40dp"
-            android:layout_centerHorizontal="true"
             android:id="@+id/image_view"
             android:layout_width="130dp"
             android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="40dp"
             android:background="@drawable/logo" />
+
         <ListView
             android:id="@+id/left_drawer"
-            android:layout_below="@+id/image_view"
             android:layout_width="260dp"
             android:layout_height="match_parent"
+            android:layout_below="@+id/image_view"
             android:layout_gravity="start"
+            android:background="@color/white"
             android:choiceMode="singleChoice"
             android:divider="@color/black"
-            android:dividerHeight="1dp"
-            android:background="@color/white"/>
+            android:dividerHeight="1dp" />
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>
